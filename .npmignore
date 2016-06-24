@@ -1,0 +1,8 @@
+.DS_Store
+build/
+config/
+node_modules/
+static
+test/
+example/
+dist/
