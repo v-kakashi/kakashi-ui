@@ -4,7 +4,7 @@
       <span
         class="vk-tree-checkbox"
         :class="selectCls"
-        :style="{'margin-right': ((deep - 1) * 22) + 10 + 'px'}"
+        :style="{'margin-right': ((deep - 1) * 22) + 'px'}"
         @click.stop="handleSelect"
       >
         <span class="vk-tree-checkbox-inner"></span>
@@ -15,6 +15,7 @@
       <span class="vk-tree-title" >{{title}}</span>
     </div>
     <ul v-show="expand" class="vk-tree-child vk-tree-child-open">
+      <vk-tree-node v-for="data in dataSoures" :selected="data.selected" :title="data.title" :data-soures="data.children"></vk-tree-node>
       <slot></slot>
     </ul>
   </li>
@@ -26,7 +27,12 @@ const COMPONENT_NAME = 'vk-tree-node'
 export default {
   name: COMPONENT_NAME,
   props: {
+    dataSoures: Array,
     title: String,
+    selected: {
+      type: Boolean,
+      default: false
+    },
     disabled: Boolean,
     disableCheckbox: Boolean,
     isLeaf: {
@@ -54,7 +60,6 @@ export default {
   data () {
     return {
       expand: false,
-      selected: false,
       someSelected: false,
       children: [],
       deep: 0
@@ -177,8 +182,8 @@ function getDeep (vm) {
   line-height: 1;
   position: relative;
   vertical-align: middle;
-  margin: 2px 10px 0 0;
-
+  margin: 2px 0px 0 0;
+  padding-right: 10px;
   &.@{namespace}-checkbox-indeterminate{
     .@{namespace}-checkbox-inner{
       border-color: #2db7f5;

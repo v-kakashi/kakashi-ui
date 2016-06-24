@@ -19,6 +19,9 @@
       <vk-tree-node title="福州天问贸易有限公司"></vk-tree-node>
       <vk-tree-node title="国家数字化学习工程技术研究中心"></vk-tree-node>
     </vk-tree>
+
+    <vk-tree :data-soures="treeData" :checked-keys="[1,2,3]">
+    </vk-tree>
   </div>
 </template>
 
@@ -27,6 +30,15 @@ import vkTreeNode from 'src/tree/TreeNode'
 import vkTree from 'src/tree/Tree'
 
 export default {
+  data () {
+    return {
+      treeData: [
+        {title: 'A', children: [{title: 'a1', children: []}, {title: 'a2', children: []}]},
+        {title: 'B', selected: true, children: []},
+        {title: 'C', children: []}
+      ]
+    }
+  },
   components: {
     vkTreeNode,
     vkTree
