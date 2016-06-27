@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
-    "doc": "./node_modules/.bin/kakashi-doc --source ./examples --tpl tpl/element.ejs",
+    "doc": "kakashi-doc --source ./examples --tpl tpl/element.ejs",
     "unit": "karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"

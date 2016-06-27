@@ -1,38 +1,29 @@
 <template>
   <li class="vk-tree-node-warp">
     <div class="vk-tree-node" @click="handleExpand">
-      <span
-        class="vk-tree-checkbox"
-        :class="selectCls"
-        :style="{'margin-right': ((deep - 1) * 22) + 'px'}"
-        @click.stop="handleSelect"
-      >
-        <span class="vk-tree-checkbox-inner"></span>
-      </span>
-      <span class="vk-tree-switcher" v-if="!isLeaf" :class="{'vk-tree-open':expand, 'vk-tree-close': !expand}">
-        <vk-icon>play_arrow</vk-icon>
-      </span>
+      <vk-node-check :state="state" :deep="deep" @click.stop="handleSelect"></vk-node-check>
+      <vk-node-switcher v-if="!isLeaf" :expand="expand"></vk-node-switcher>
       <span class="vk-tree-title" >{{title}}</span>
     </div>
     <ul v-show="expand" class="vk-tree-child vk-tree-child-open">
-      <vk-tree-node v-for="data in dataSoures" :selected="data.selected" :title="data.title" :data-soures="data.children"></vk-tree-node>
       <slot></slot>
+      <component :is="data.type ? data.type : 'vkTreeNode'" v-for="data in dataSoures" :img-src="data.imgSrc"  :selected="data.selected" :title="data.title" :data-soures="data.children"></component>
     </ul>
   </li>
 </template>
 
 <script>
-import vkIcon from 'src/Icon'
-const COMPONENT_NAME = 'vk-tree-node'
+import vkNodeCheck from './NodeCheck'
+import vkNodeSwitcher from './NodeSwitcher'
+import vkTreeNodeIcon from './TreeNodeIcon'
+
 export default {
-  name: COMPONENT_NAME,
+  name: 'vkTreeNode',
+  role: 'NodeParent',
   props: {
     dataSoures: Array,
     title: String,
-    selected: {
-      type: Boolean,
-      default: false
-    },
+    state: Number,
     disabled: Boolean,
     disableCheckbox: Boolean,
     isLeaf: {
@@ -41,9 +32,10 @@ export default {
     }
   },
   ready () {
-    this.deep = getDeep(this)
+    this.deep = this.getDeep()
+    console.log(this.$children)
     this.$children.forEach(component => {
-      let existNodeTree = component.$options.name === COMPONENT_NAME
+      let existNodeTree = ['NodeParent', 'NodeChild'].indexOf(component.$options.role) >= 0
       if (existNodeTree) {
         this.isLeaf = false
         component.$on('select', this.handleSelectedByChild)
@@ -52,7 +44,7 @@ export default {
 
     this.$nextTick(() => {
       // 注册子组件
-      if (this.$parent.$options.name === COMPONENT_NAME) {
+      if (this.$parent.$options.role === 'NodeParent') {
         this.$parent.children.push(this)
       }
     })
@@ -60,7 +52,6 @@ export default {
   data () {
     return {
       expand: false,
-      someSelected: false,
       children: [],
       deep: 0
     }
@@ -73,62 +64,50 @@ export default {
         this.handleSelect()
       }
     },
-    handleSelect (event, {selected, isFromParent} = {}) {
+    handleSelect (event) {
       console.log(this.title + '-handleSelect')
-      if (isFromParent) {
-        // 从父新发来的事件，就不在用 $emit('select') 发回去了
-        this.someSelected = this.selected = selected
-      } else {
-        this.someSelected = this.selected = !this.selected
-        this.$emit('select')
-      }
-
+      var state = this.state >= 1 ? 0 : 2
+      this.setSelect(state)
+      this.$emit('select')
+    },
+    setSelect (state) {
+      this.state = state
       // 通知子组件选中
       this.children.forEach(treeNode => {
-        treeNode.handleSelect(event, {selected: this.selected, isFromParent: true})
+        treeNode.setSelect(state)
       })
     },
     handleSelectedByChild () {
-      this.someSelected = this.children.some(treeNode => treeNode.selected || treeNode.someSelected)
-      this.selected = this.children.every(treeNode => treeNode.selected)
-      this.$emit('select')
-    }
-  },
-  computed: {
-    // TODO: 要写测试用例
-    selectCls () {
-      if (this.isLeaf) {
-        return this.selected ? 'vk-tree-checkbox-checked' : ''
+      var isSelectAll = this.children.every(treeNode => treeNode.state === 2)
+      if (isSelectAll) {
+        this.state = 2
       } else {
-        if (this.selected) {
-          return 'vk-tree-checkbox-checked'
-        } else if (this.selected === false && this.someSelected) {
-          return 'vk-tree-checkbox-indeterminate'
-        } else {
-          return ''
+        this.state = this.children.some(treeNode => treeNode.state >= 1) ? 1 : 0
+      }
+      this.$emit('select')
+    },
+    /**
+     * 获取组件被嵌套的深度
+     * @param  {Vue} vm vm
+     * @return {Number} 深度
+     */
+    getDeep () {
+      var vm = this
+      var deep = 0
+      while ((vm = vm.$parent)) {
+        ++deep
+        if (vm.$options.role === 'NodeRoot') {
+          return deep
         }
       }
+      return deep
     }
   },
   components: {
-    vkIcon
+    vkNodeCheck,
+    vkNodeSwitcher,
+    vkTreeNodeIcon
   }
-}
-
-/**
- * 获取组件被嵌套的深度
- * @param  {Vue} vm vm
- * @return {Number} 深度
- */
-function getDeep (vm) {
-  var deep = 0
-  while ((vm = vm.$parent)) {
-    ++deep
-    if (vm.$options.name === 'vk-tree') {
-      return deep
-    }
-  }
-  return deep
 }
 
 </script>
@@ -172,101 +151,6 @@ function getDeep (vm) {
   padding: 8px 10px;
   display: flex;
   align-items: center;
-}
-
-.@{namespace}-checkbox{
-  white-space: nowrap;
-  cursor: pointer;
-  outline: none;
-  display: inline-block;
-  line-height: 1;
-  position: relative;
-  vertical-align: middle;
-  margin: 2px 0px 0 0;
-  padding-right: 10px;
-  &.@{namespace}-checkbox-indeterminate{
-    .@{namespace}-checkbox-inner{
-      border-color: #2db7f5;
-      background-color: #2db7f5;
-      &:after{
-        content: ' ';
-        transform: scale(1);
-        position: absolute;
-        left: 6px;
-        top: 10px;
-        width: 8px;
-        height: 0px;
-      }
-    }
-  }
-
-  .@{namespace}-checkbox-inner{
-    position: relative;
-    display: inline-block;
-    width: 22px;
-    height: 22px;
-    border-radius: 22px;
-    border: 1px solid #d9d9d9;
-    background-color: #fff;
-    transition: border-color .1s cubic-bezier(.71,-.46,.29,1.46),background-color .1s cubic-bezier(.71,-.46,.29,1.46);
-
-    &:after{
-      transform: rotate(45deg) scale(0);
-      position: absolute;
-      left: 7px;
-      top: 3px;
-      display: table;
-      width: 6px;
-      height: 10px;
-      border: 2px solid #fff;
-      border-top: 0;
-      border-left: 0;
-      content: ' ';
-      transition: all .1s cubic-bezier(.71,-.46,.88,.6);
-    }
-  }
-}
-
-&.@{namespace}-checkbox-checked{
-  .@{namespace}-checkbox-inner {
-    border-color: #2db7f5;
-    background-color: #2db7f5;
-
-    &:after{
-      transform: rotate(45deg) scale(1);
-      transition: all .2s cubic-bezier(.12,.4,.29,1.46) .1s;
-    }
-  }
-}
-
-.@{namespace}-switcher{
-  margin: 0;
-  border: 0 none;
-  cursor: pointer;
-  outline: none;
-  height: 22px;
-  width: 22px;
-  .vk-icon{
-    font-size: 16px;
-    line-height: 22px;
-    zoom: 1;
-    display: inline-block;
-    font-weight: 700;
-    color: #9f9f9f;
-    position: absolute;
-    transition: transform .3s ease;
-  }
-  &.@{namespace}-close{
-    .vk-icon{
-      transform: rotate(0deg);
-    }
-  }
-
-  &.@{namespace}-open{
-    .vk-icon{
-      transform: rotate(90deg)
-    }
-  }
 }
 
 .@{namespace}-title{

@@ -26,8 +26,8 @@
 ```
 
 ```js
-import vkTreeNode from '../src/tree/TreeNode.vue'
-import vkTree from '../src/tree/Tree.vue'
+import vkTreeNode from '../../src/tree/TreeNode'
+import vkTree from '../../src/tree/Tree'
 import Vue from 'vue'
 new Vue({
   el: "#app",
@@ -40,4 +40,5 @@ new Vue({
 
 
 ## desc
-一个组织机构树
+一个组织机构树,
+asd;jfl;ajsdfopiuasd

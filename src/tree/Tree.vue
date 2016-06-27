@@ -1,14 +1,15 @@
 <template>
   <ul class="vk-tree">
     <slot></slot>
-    <vk-tree-node v-for="data in dataSoures" :selected="data.selected"  :title="data.title" :data-soures="data.children" ></vk-tree-node>
+    <component :is="data.type ? data.type : 'vkTreeNodeIcon'" v-for="data in dataSoures" :img-src="data.imgSrc"  :selected="data.selected" :title="data.title" :data-soures="data.children"></component>
   </ul>
 </template>
 
 <script>
+import vkTreeNodeIcon from './TreeNodeIcon'
 import vkTreeNode from './TreeNode'
 export default {
-  name: 'vk-tree',
+  role: 'NodeRoot',
   props: {
     dataSoures: Array,
     checkedKeys: Array
@@ -18,7 +19,8 @@ export default {
     console.log(this.checkedKeys)
   },
   components: {
-    vkTreeNode
+    vkTreeNode,
+    vkTreeNodeIcon
   }
 }
 </script>
