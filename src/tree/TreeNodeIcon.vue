@@ -3,7 +3,7 @@
     <div class="vk-tree-node" @click.stop="handleSelect">
       <vk-node-check :state="state" :deep="deep"></vk-node-check>
       <slot>
-        <vk-image class="vk-tree-image" :src="imgSrc" :width="imgWidth" :height="imgHeight"></vk-image>
+        <vk-image class="vk-tree-image" :src="extra.src" :width="extra.width || '40px'" :height="extra.height || '40px'"></vk-image>
         <span class="vk-tree-title" >{{title}}</span>
       </slot>
     </div>
@@ -17,14 +17,14 @@ export default {
   name: 'vkTreeNodeIcon',
   role: 'NodeChild',
   props: {
-    imgSrc: String,
-    imgWidth: {
-      type: String,
-      default: '40px'
-    },
-    imgHeight: {
-      type: String,
-      default: '40px'
+    key: String,
+    extra: {
+      type: Object,
+      default: {
+        src: null,
+        width: null,
+        height: null
+      }
     },
     title: String,
     state: {
@@ -49,9 +49,12 @@ export default {
     }
   },
   methods: {
-    handleSelect () {
+    handleSelect (event, state) {
       console.log(this.title + '-handleSelect')
-      this.state = this.state === 0 ? 2 : 0
+      if (state === undefined) {
+        state = this.state === 0 ? 2 : 0
+      }
+      this.state = state
       this.$emit('select')
     },
     setSelect (state) {

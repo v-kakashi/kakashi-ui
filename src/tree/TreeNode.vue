@@ -7,7 +7,7 @@
     </div>
     <ul v-show="expand" class="vk-tree-child vk-tree-child-open">
       <slot></slot>
-      <component :is="data.type ? data.type : 'vkTreeNode'" v-for="data in dataSoures" :img-src="data.imgSrc"  :selected="data.selected" :title="data.title" :data-soures="data.children"></component>
+      <component :is="data.type ? data.type : 'vkTreeNode'" v-for="data in dataSoures" :extra="data.extra" :selected="data.selected" :title="data.title" :data-soures="data.children"></component>
     </ul>
   </li>
 </template>
@@ -21,7 +21,9 @@ export default {
   name: 'vkTreeNode',
   role: 'NodeParent',
   props: {
+    extra: Object,
     dataSoures: Array,
+    key: String,
     title: String,
     state: Number,
     disabled: Boolean,
@@ -64,9 +66,11 @@ export default {
         this.handleSelect()
       }
     },
-    handleSelect (event) {
+    handleSelect (event, state) {
       console.log(this.title + '-handleSelect')
-      var state = this.state >= 1 ? 0 : 2
+      if (state === undefined) {
+        state = this.state >= 1 ? 0 : 2
+      }
       this.setSelect(state)
       this.$emit('select')
     },

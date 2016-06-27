@@ -1,7 +1,14 @@
 <template>
   <ul class="vk-tree">
     <slot></slot>
-    <component :is="data.type ? data.type : 'vkTreeNodeIcon'" v-for="data in dataSoures" :img-src="data.imgSrc"  :selected="data.selected" :title="data.title" :data-soures="data.children"></component>
+    <component
+      v-for="data in dataSoures"
+      :is="data.type ? data.type : 'vkTreeNode'"
+      :extra="data.extra"
+      :selected="data.selected"
+      :title="data.title"
+      :data-soures="data.children">
+    </component>
   </ul>
 </template>
 
@@ -11,17 +18,31 @@ import vkTreeNode from './TreeNode'
 export default {
   role: 'NodeRoot',
   props: {
+    extra: Object,
     dataSoures: Array,
-    checkedKeys: Array
+    selectKeys: Array
   },
   ready () {
-    console.log(this.$children)
-    console.log(this.checkedKeys)
+    this.$nextTick(() => {
+      setSelect(this, this.selectKeys)
+    })
   },
   components: {
     vkTreeNode,
     vkTreeNodeIcon
   }
+}
+
+function setSelect (node, selectKeys) {
+  node.$children.forEach(component => {
+    let existNodeTree = ['NodeParent', 'NodeChild'].indexOf(component.$options.role) >= 0
+    if (existNodeTree && selectKeys && component.key) {
+      if (selectKeys.indexOf(component.key) >= 0) {
+        component.handleSelect(null, 2)
+      }
+    }
+    setSelect(component, selectKeys)
+  })
 }
 </script>
 

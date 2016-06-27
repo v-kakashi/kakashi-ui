@@ -20,10 +20,10 @@ new Vue({
     return {
       treeData: [
         {title: 'A', children: [
-          {title: 'a1', children: [], imgSrc: 'https://avatars2.githubusercontent.com/u/20056754?v=3&s=200', type: 'vkTreeNodeIcon'},
+          {title: 'a1', children: [], extra:{ src: 'https://avatars2.githubusercontent.com/u/20056754?v=3&s=200'}, type: 'vkTreeNodeIcon'},
           {title: 'a2', children: []}]
         },
-        {title: 'B', type: 'vkTreeNodeIcon', imgSrc: 'https://avatars2.githubusercontent.com/u/20056754?v=3&s=200', selected: true, children: []},
+        {title: 'B', type: 'vkTreeNodeIcon', extra:{ src: 'https://avatars2.githubusercontent.com/u/20056754?v=3&s=200'}, selected: true, children: []},
         {title: 'C', children: []}
       ]
     }
