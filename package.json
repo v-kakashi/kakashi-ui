@@ -1,13 +1,13 @@
 {
   "name": "kakashi-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "一个组件库",
   "author": "limingmin <314407103@qq.com>",
   "main": "./src/kakashi-ui.vue",
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
-    "doc": "kakashi-doc --source ./examples --tpl tpl/element.ejs",
+    "doc": "kakashi-doc --source ./examples",
     "unit": "karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
@@ -43,7 +43,7 @@
     "jasmine": "^2.4.1",
     "jasmine-core": "^2.4.1",
     "json-loader": "^0.5.4",
-    "kakashi-doc": "^1.0.3",
+    "kakashi-doc": "^1.0.4",
     "karma": "^0.13.15",
     "karma-coverage": "^0.5.5",
     "karma-jasmine": "^1.0.2",

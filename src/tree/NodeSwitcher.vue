@@ -1,6 +1,6 @@
 <template>
   <span class="vk-tree-switcher" :class="{'vk-tree-open':expand, 'vk-tree-close': !expand}">
-    <vk-icon>play_arrow</vk-icon>
+    <vk-icon>play1</vk-icon>
   </span>
 </template>
 

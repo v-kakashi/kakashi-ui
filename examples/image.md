@@ -1,5 +1,8 @@
-## code
+---
+title: Image 图片控件
+---
 
+## 代码演示
 
 ```html
 <div id="app">

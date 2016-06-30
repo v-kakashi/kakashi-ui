@@ -1,5 +1,13 @@
-## code
+---
+title: Tree 树形控件
+type: Tree
+---
 
+## 何时使用
+
+文件夹、组织架构、生物分类、国家地区等等，世间万物的大多数结构都是树形结构。使用`树控件`可以完整展现其中的层级关系，并具有展开收起选择等交互功能。
+
+## 代码演示
 
 ```html
 <div id="app">
@@ -26,8 +34,8 @@
 ```
 
 ```js
-import vkTreeNode from '../../src/tree/TreeNode'
-import vkTree from '../../src/tree/Tree'
+import vkTreeNode from 'src/tree/TreeNode'
+import vkTree from 'src/tree/Tree'
 import Vue from 'vue'
 new Vue({
   el: "#app",
@@ -38,7 +46,10 @@ new Vue({
 })
 ```
 
+## vkTreeNode
 
-## desc
-一个组织机构树,
-asd;jfl;ajsdfopiuasd
+| 参数      | 说明                                     | 类型       | 默认值 |
+|-----------|------------------------------------------|------------|-------|
+| selectKeys | 选中选项 | Array  | null    |
+| extra | 扩展字段 | Object | null |
+| dataSoures | 数据源 | Array | [] |

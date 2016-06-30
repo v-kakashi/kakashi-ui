@@ -1,4 +1,8 @@
-## code
+---
+title: Tree 树形控件
+---
+
+## 代码演示
 
 
 ```html
@@ -36,6 +40,20 @@ new Vue({
 })
 ```
 
+## vkTree
 
-## desc
-一个组织机构树
+| 参数      | 说明                                     | 类型       | 默认值 |
+|-----------|------------------------------------------|------------|-------|
+| selectKeys | 选中选项 | Array  | null    |
+| extra | 扩展字段 | Object | null |
+| dataSoures | 数据源 | Array | [] |
+
+## vkTreeNode
+
+| 参数      | 说明                                     | 类型       | 默认值 |
+|-----------|------------------------------------------|------------|-------|
+| selectKeys | 选中选项 | Array  | null    |
+| extra | 扩展字段 | Object | null |
+| dataSoures | 数据源 | Array | [] |
+
+## vkTreeNodeIcon
