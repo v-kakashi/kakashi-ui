@@ -68,7 +68,7 @@ title: Icon 图标控件
         <vk-icon>favorite</vk-icon> <div class="icon-text">favorite</div>
       </div>
       <div class="icon-cell">
-        <vk-icon>favorite_border</vk-icon> <div class="icon-text">favorite_border</div>
+        <vk-icon>favorite_border</vk-icon> <div class="icon-text">favorite1</div>
       </div>
       <div class="icon-cell">
         <vk-icon>folder</vk-icon> <div class="icon-text">folder</div>
@@ -133,6 +133,12 @@ title: Icon 图标控件
       <div class="icon-cell">
         <vk-icon>zoom_map</vk-icon> <div class="icon-text">zoom_map</div>
       </div>
+      <div class="icon-cell">
+        <vk-icon>nav_before</vk-icon> <div class="icon-text">nav_before</div>
+      </div>
+      <div class="icon-cell">
+        <vk-icon>nav_next</vk-icon> <div class="icon-text">nav_next</div>
+      </div>
     </div>
   </div>
   <div class="group">
@@ -171,3 +177,5 @@ new Vue({
 | value | 图标的图案 | String  | ''    |
 | color | 图标颜色 | String | '' |
 | class | 图标的 className | String | '' |
+
+## Slot

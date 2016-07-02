@@ -76,16 +76,8 @@ export default {
 
 
 <style lang="less">
-  /* Button Component */
-  @button-default-color: #656b79;
-  @button-default-background-color: #f6f8fa;
-  @button-default-plain-color: #5a5a5a;
-  @button-default-box-shadow: 0 0 1px #b8bbbf;
-  @button-primary-color: #fff;
-  @button-primary-background-color: #26a2ff;
-  @button-danger-color: #fff;
-  @button-danger-background-color: #ef4f4f;
-
+  @import "./assets/style/var.less";
+  
   @namespace: vk-button;
 
   button.@{namespace}{

@@ -1,0 +1,37 @@
+.border(@color) {
+  color: @color;
+  content: " ";
+  size: 100% 1;
+  height: 1;
+  width: 100%;
+  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    transform: scaleY(.5);
+  }
+}
+
+.border-top(@color) {
+  position: relative;
+
+  &::after {
+    .border(@color);
+    border-top: 1px solid;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 0 0;
+  }
+}
+
+
+.border-bottom(@color) {
+  position: relative;
+
+  &::before {
+    .border(@color);
+    border-bottom: 1px solid;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform-origin: 0 100%;
+  }
+}
