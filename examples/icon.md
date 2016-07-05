@@ -44,9 +44,6 @@ title: Icon 图标控件
         <vk-icon>arrow_up</vk-icon> <div class="icon-text">arrow_up</div>
       </div>
       <div class="icon-cell">
-        <vk-icon>attach</vk-icon> <div class="icon-text">attach</div>
-      </div>
-      <div class="icon-cell">
         <vk-icon>battery_alert</vk-icon> <div class="icon-text">battery_alert</div>
       </div>
       <div class="icon-cell">

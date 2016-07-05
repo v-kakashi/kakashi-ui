@@ -16,15 +16,11 @@ export default {
       type: Number,
       default: 0
     },
-    selected: {
-      type: Boolean,
-      default: false
-    },
     deep: {
       type: Number,
       default: 0
     },
-    disableCheckbox: Boolean
+    disable: Boolean
   },
   computed: {
     selectCls () {

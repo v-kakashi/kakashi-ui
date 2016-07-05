@@ -53,3 +53,11 @@ new Vue({
 | selectKeys | 选中选项 | Array  | null    |
 | extra | 扩展字段 | Object | null |
 | dataSoures | 数据源 | Array | [] |
+
+
+## vkNodeCheck
+
+| 参数      | 说明                                     | 类型       | 默认值 |
+|-----------|------------------------------------------|------------|-------|
+| state | 选择框状态；<br />0: 未选中;<br />1: 半选中;<br />2: 选中; | Number  | 0    |
+| disable | 是否禁用选节点 | Boolean | false |
