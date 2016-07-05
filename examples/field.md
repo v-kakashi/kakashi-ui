@@ -41,6 +41,9 @@ title: Field 表单元素
 ```js
 import vkField from 'src/Field'
 import Vue from 'vue'
+
+import 'kakashi-theme/src/components/field.less'
+
 new Vue({
   el: "#app",
   components: {

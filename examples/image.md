@@ -13,6 +13,9 @@ title: Image 图片控件
 ```js
 import vkImage from '../src/Image'
 import Vue from 'vue'
+
+import 'kakashi-theme/src/components/image.less'
+
 new Vue({
   el: "#app",
   components: {

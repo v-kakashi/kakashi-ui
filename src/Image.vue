@@ -75,15 +75,3 @@ function getSize (src) {
   })
 }
 </script>
-
-<style lang="less">
-@namespace: vk-image;
-.@{namespace} {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-
-}
-
-</style>

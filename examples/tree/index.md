@@ -37,6 +37,9 @@ type: Tree
 import vkTreeNode from 'src/tree/TreeNode'
 import vkTree from 'src/tree/Tree'
 import Vue from 'vue'
+
+import 'kakashi-theme/src/components/tree.less'
+
 new Vue({
   el: "#app",
   components: {

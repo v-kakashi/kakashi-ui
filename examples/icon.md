@@ -171,6 +171,9 @@ title: Icon 图标控件
 ```js
 import vkIcon from 'src/Icon'
 import Vue from 'vue'
+
+import 'kakashi-theme/src/components/icon.less'
+
 new Vue({
   el: "#app",
   components: {

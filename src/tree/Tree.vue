@@ -45,11 +45,3 @@ function setSelect (node, selectKeys) {
   })
 }
 </script>
-
-<style>
-.vk-tree{
-  background: #fff;
-  margin: 0;
-  padding: 0;
-}
-</style>

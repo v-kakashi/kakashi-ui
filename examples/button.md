@@ -57,6 +57,8 @@ title: Button 按钮控件
 ```js
 import vkButton from 'src/Button'
 import Vue from 'vue'
+import 'kakashi-theme/src/components/button.less'
+
 new Vue({
   el: "#app",
   components: {

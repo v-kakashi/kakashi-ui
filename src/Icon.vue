@@ -19,5 +19,3 @@ export default {
   }
 }
 </script>
-
-<style src="./assets/style/font.css"></style>

@@ -84,12 +84,3 @@ export default {
 }
 
 </script>
-
-<style>
-.vk-tree-image{
-  margin-right: 10px;
-}
-.vk-tree-image .vk-image-img{
-  border-radius: 100%;
-}
-</style>
