@@ -4,7 +4,7 @@ title: Icon 图标控件
 
 ## 说明
 
-图标组件，目前使用 [Material Icons](https://icomoon.io/) 的字体图标，包含 40 个常用图标。
+图标组件，目前使用 [Material Icons](https://icomoon.io/) 的字体图标，包含四十多个常用图标。
 
 ## 代码演示
 
@@ -135,6 +135,18 @@ title: Icon 图标控件
       </div>
       <div class="icon-cell">
         <vk-icon>nav_next</vk-icon> <div class="icon-text">nav_next</div>
+      </div>
+      <div class="icon-cell">
+        <vk-icon>success</vk-icon> <div class="icon-text">success</div>
+      </div>
+      <div class="icon-cell">
+        <vk-icon>warning</vk-icon> <div class="icon-text">warning</div>
+      </div>
+      <div class="icon-cell">
+        <vk-icon>remove</vk-icon> <div class="icon-text">remove</div>
+      </div>
+      <div class="icon-cell">
+        <vk-icon>error</vk-icon> <div class="icon-text">error</div>
       </div>
     </div>
   </div>

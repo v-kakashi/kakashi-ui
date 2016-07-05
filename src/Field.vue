@@ -1,10 +1,10 @@
 <template>
   <div class="vk-field">
-    <cell
+    <vk-cell
       :after="state ? state : after"
       :icon="icon"
       :title="label"
-      clickoutside="active = false"
+      v-clickoutside="active = false"
       :is-link="false"
       :class="[
       { 'is-textarea': type === 'textarea'},
@@ -26,38 +26,21 @@
           :type="type"
           @focus="active = true"
           v-model="value">
-        <div
+        <vk-icon
           @click="value = ''"
-          class="vk-field-clear"
-          v-show="value && type !== 'textarea' && active">
-          <i class="mintui mintui-field-error"></i>
+          v-show="value && type !== 'textarea' && active"
+          class="vk-field-clear">remove</vk-icon>
         </div>
       </template>
-    </cell>
-    <slot></slot>
+    </vk-cell>
   </div>
 </template>
 
 <script>
-import Cell from './Cell'
+import vkCell from './Cell'
+import vkIcon from './Icon'
+import Clickoutside from 'vue-clickoutside'
 
-/**
- * mt-field
- * @desc 编辑器，依赖 cell
- * @module components/field
- *
- * @param {string} [type=text] - field 类型，接受 text, number, email, url, tel, date, datetime, password, textarea 等
- * @param {string} [label] - 标签
- * @param {string} [rows] - textarea 的 rows
- * @param {string} [placeholder] - placeholder
- * @param {string} [state] - 表单校验状态样式，接受 error, warning, success
- *
- * @example
- * <mt-field label="用户名"></mt-field>
- * <mt-field label="密码" placeholder="请输入密码"></mt-field>
- * <mt-field label="自我介绍" placeholder="自我介绍" type="textarea" rows="4"></mt-field>
- * <mt-field label="邮箱" placeholder="成功状态" state="success"></mt-field>
- */
 export default {
 
   data () {
@@ -65,22 +48,27 @@ export default {
       active: false
     }
   },
-/*
   directives: {
     Clickoutside
-  },
-*/
-  computed: {
-    stateCls () {
-      return !this.state ? '' : ('state-' + this.state)
-    }
   },
   props: {
     type: {
       type: String,
+      validator: function (value) {
+        return ['text',
+                'number',
+                'email',
+                'url',
+                'tel',
+                'date',
+                'datetime',
+                'password',
+                'textarea'].indexOf(value) >= 0
+      },
       default: 'text'
     },
     icon: String,
+    after: String,
     rows: String,
     label: String,
     placeholder: String,
@@ -90,12 +78,12 @@ export default {
       },
       type: String
     },
-    after: String,
     value: ''
   },
 
   components: {
-    Cell
+    vkCell,
+    vkIcon
   }
 }
 </script>
@@ -108,13 +96,7 @@ export default {
 
       display: flex;
 
-      textarea {
-        align-items: inherit;
-
-        .vk-cell-title {
-          padding-top: 5px;
-        }
-      }
+      textarea { align-items: inherit; }
 
       .vk-cell {
         padding: 9px 10px;
@@ -127,9 +109,7 @@ export default {
         flex: none;
       }
 
-      .is-icon{
-        .vk-cell-text{ width: 83px;}
-      }
+      .is-icon .vk-cell-text{ width: 83px; }
 
       .vk-cell-value {
         flex: 1;
@@ -148,9 +128,7 @@ export default {
         width: 100%;
       }
 
-      &-clear {
-        opacity: .2;
-      }
+      &-clear { opacity: .2; }
 
       .state-success .vk-cell-after{ color: green; }
       .state-warning .vk-cell-after{ color: #ffc107; }

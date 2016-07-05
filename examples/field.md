@@ -4,7 +4,7 @@ title: Field 表单元素
 
 ## 说明
 
-常用的的表单输入元素
+常用的的表单输入元素，和表单状态
 
 ## 代码演示
 
@@ -38,7 +38,6 @@ title: Field 表单元素
 </div>
 ```
 
-
 ```js
 import vkField from 'src/Field'
 import Vue from 'vue'
@@ -50,12 +49,15 @@ new Vue({
 })
 ```
 
-## vkIcon
+## vkField
 
 | 参数      | 说明                                     | 类型       | 默认值 |
 |-----------|------------------------------------------|------------|-------|
-| value | 图标的图案 | String  | ''    |
-| color | 图标颜色 | String | '' |
-| class | 图标的 className | String | '' |
-
-## Slot
+| type | 输入框类型 , 只接受 text, number, email, url, tel, date, datetime, password, textarea | String  | 'text' |
+| label | 标签 | String  | ''    |
+| rows | 类型为 textarea 时可指定高度（显示行数） | Number | '' |
+| value	 | 绑定表单输入值	 | String | '' |
+| placeholder | 占位内容 | String | '' |
+| state | 表单校验状态样式，只接受 error, warning, success | String | '' |
+| after | 尾部图标 由 [vkIcon](./icon.html) 组件提供显示 | String | '' |
+| icon | 头部图标 由 [vkIcon](./icon.html) 组件提供显示 | String | '' |
