@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import vkIcon from './Icon'
+import vkIcon from './icon.vue'
 
 export default {
   props: {

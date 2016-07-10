@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import vkNodeCheck from './NodeCheck'
-import vkNodeSwitcher from './NodeSwitcher'
-import vkTreeNodeIcon from './TreeNodeIcon'
+import vkNodeCheck from './nodeCheck'
+import vkNodeSwitcher from './nodeSwitcher'
+import vkTreeNodeIcon from './treeNodeIcon'
 
 export default {
   name: 'vkTreeNode',

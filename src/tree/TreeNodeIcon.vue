@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import vkImage from '../Image'
-import vkNodeCheck from './NodeCheck'
+import vkImage from '../image'
+import vkNodeCheck from './nodeCheck'
 export default {
   name: 'vkTreeNodeIcon',
   role: 'NodeChild',

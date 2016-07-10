@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import vkIcon from './Icon'
+import vkIcon from './icon'
 
 export default {
   props: {

@@ -37,8 +37,8 @@
 </template>
 
 <script>
-import vkCell from './Cell'
-import vkIcon from './Icon'
+import vkCell from './cell'
+import vkIcon from './icon'
 import Clickoutside from 'vue-clickoutside'
 
 export default {

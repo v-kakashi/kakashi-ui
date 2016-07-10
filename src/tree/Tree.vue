@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import vkTreeNodeIcon from './TreeNodeIcon'
-import vkTreeNode from './TreeNode'
+import vkTreeNodeIcon from './treeNodeIcon'
+import vkTreeNode from './treeNode'
 export default {
   role: 'NodeRoot',
   props: {
