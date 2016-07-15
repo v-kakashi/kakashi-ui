@@ -4,10 +4,18 @@
     <component
       v-for="data in dataSoures"
       :is="data.type ? data.type : 'vkTreeNode'"
-      :extra="data.extra"
+      :extra="data"
       :selected="data.selected"
       :title="data.title"
-      :data-soures="data.children">
+      :key="data.id"
+      :data-soures="data.children"
+      :on-select="onSelect"
+      :on-expand="onExpand"
+      :is-leaf="isLeaf"
+      :is-sync="isSync"
+      @select="onSelect"
+      @expand="onExpand"
+      >
     </component>
   </ul>
 </template>
@@ -16,11 +24,35 @@
 import vkTreeNodeIcon from './treeNodeIcon'
 import vkTreeNode from './treeNode'
 export default {
+  name: 'vkTree',
   role: 'NodeRoot',
   props: {
     extra: Object,
     dataSoures: Array,
-    selectKeys: Array
+    selectKeys: Array,
+    isSync: {
+      type: Boolean,
+      default: true
+    },
+    onSelect: {
+      type: Function,
+      default: () => true
+    },
+    onExpand: {
+      type: Function,
+      default: () => true
+    },
+    isLeaf: {
+      type: Boolean,
+      default: true
+    }
+  },
+  data () {
+    return {
+      state: 0
+    }
+  },
+  methods: {
   },
   ready () {
     this.$nextTick(() => {

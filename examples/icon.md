@@ -169,7 +169,7 @@ title: Icon 图标控件
 
 
 ```js
-import vkIcon from 'src/Icon'
+import vkIcon from 'src/icon'
 import Vue from 'vue'
 
 import 'kakashi-theme/src/components/icon.less'

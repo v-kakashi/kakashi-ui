@@ -7,7 +7,7 @@ title: Tree 树形控件
 
 ```html
 <div id="app">
-  <vk-tree :data-soures="treeData" :checked-keys="[1,2,3]">
+  <vk-tree :data-soures="treeData" :checked-keys="[1,2,3]" :on-select="select">
     <vk-tree-node title="美术中心一部"></vk-tree-node>
   </vk-tree>
 </div>
@@ -35,6 +35,11 @@ new Vue({
       ]
     }
   },
+  methods: {
+    select (selectData) {
+      console.log(selectData)
+    }
+  },
   components: {
     vkTreeNode,
     vkTree,
@@ -51,6 +56,15 @@ new Vue({
 | extra | 扩展字段 | Object | null |
 | dataSoures | 数据源 | Array | [] |
 
+
+## 事件
+
+| 参数      | 说明                                     | 入参 |
+|----------|-----------------------------------------|------|
+| onSelect | 选中节点事件 | 选中的节点数据 |
+
+---
+
 ## vkTreeNode
 
 | 参数      | 说明                                     | 类型       | 默认值 |
@@ -58,5 +72,8 @@ new Vue({
 | selectKeys | 选中选项 | Array  | null    |
 | extra | 扩展字段 | Object | null |
 | dataSoures | 数据源 | Array | [] |
+
+
+---
 
 ## vkTreeNodeIcon

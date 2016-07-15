@@ -39,7 +39,7 @@ title: Field 表单元素
 ```
 
 ```js
-import vkField from 'src/Field'
+import vkField from 'src/field'
 import Vue from 'vue'
 
 import 'kakashi-theme/src/components/field.less'
@@ -64,3 +64,8 @@ new Vue({
 | state | 表单校验状态样式，只接受 error, warning, success | String | '' |
 | after | 尾部图标 由 [vkIcon](./icon.html) 组件提供显示 | String | '' |
 | icon | 头部图标 由 [vkIcon](./icon.html) 组件提供显示 | String | '' |
+
+## Slot
+| name      | 说明                                     |
+|-----------|------------------------------------------|
+| - | 自定义布局右侧 |

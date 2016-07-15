@@ -10,28 +10,30 @@
       { 'is-textarea': type === 'textarea'},
       { 'is-icon': !!icon},
       'state-' + state ]">
-      <template slot="value">
-        <textarea
-          class="vk-field-core"
-          :placeholder="placeholder"
-          v-if="type === 'textarea'"
-          :rows="rows"
-          v-model="value">
-        </textarea>
-        <input
-          class="vk-field-core"
-          :placeholder="placeholder"
-          :number="type === 'number'"
-          v-else
-          :type="type"
-          @focus="active = true"
-          v-model="value">
-        <vk-icon
-          @click="value = ''"
-          v-show="value && type !== 'textarea' && active"
-          class="vk-field-clear">remove</vk-icon>
-        </div>
-      </template>
+        <template slot="value">
+          <slot>
+            <textarea
+              class="vk-field-core"
+              :placeholder="placeholder"
+              v-if="type === 'textarea'"
+              :rows="rows"
+              v-model="value">
+            </textarea>
+            <input
+              class="vk-field-core"
+              :placeholder="placeholder"
+              :number="type === 'number'"
+              v-else
+              :type="type"
+              @focus="active = true"
+              v-model="value">
+            <vk-icon
+              @click="value = ''"
+              v-show="value && type !== 'textarea' && active"
+              class="vk-field-clear">remove</vk-icon>
+            </div>
+          </slot>
+        </template>
     </vk-cell>
   </div>
 </template>
