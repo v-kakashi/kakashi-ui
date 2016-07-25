@@ -28,7 +28,7 @@
               @focus="active = true"
               v-model="value">
             <vk-icon
-              @click="value = ''"
+              @touchstart="value = ''"
               v-show="value && type !== 'textarea' && active"
               class="vk-field-clear">remove</vk-icon>
             </div>

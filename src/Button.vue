@@ -21,7 +21,10 @@ import vkIcon from './icon.vue'
 export default {
   props: {
     icon: String,
-    disabled: Boolean,
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     plain: Boolean,
     type: {
       type: String,
@@ -48,9 +51,8 @@ export default {
   },
   methods: {
     handleClick ($event) {
-      if (this.disabled) {
-        $event.preventDefault()
-        $event.stopPropagation()
+      if (this.disabled === false) {
+        this.$dispatch('vk-button-touch')
       }
     }
   },

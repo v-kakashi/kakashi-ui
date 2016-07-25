@@ -1,8 +1,8 @@
 <template>
   <li class="vk-tree-node-warp">
-    <div class="vk-tree-node" @click="handleExpand">
-      <vk-node-check :state="state" :deep="deep" @click.stop="handleSelect"></vk-node-check>
-      <vk-node-switcher v-if="!isLeaf" :expand="expand"></vk-node-switcher>
+    <div class="vk-tree-node" v-touch:tap="handleExpand">
+      <vk-node-check :state="state" :deep="deep" v-touch:tap="handleSelect"></vk-node-check>
+      <vk-node-switcher v-if="isSync === false || !!children.length" :expand="expand"></vk-node-switcher>
       <span class="vk-tree-title" >{{title}}</span>
     </div>
     <ul v-show="expand" class="vk-tree-child vk-tree-child-open">
@@ -13,11 +13,12 @@
         @select="onSelect"
         @expand="onExpand"
         :extra="data"
+        track-by="$index"
         :selected="data.selected"
         :title="data.title"
         :key="data.id"
-        :is-leaf="defaultIsLeaf"
-        :is-sync="isSync"
+        :is-leaf="childrenIsLeaf"
+        :is-sync="!!data.isSync || childrenIsSync"
         :data-soures="data.children">
       </component>
     </ul>
@@ -36,7 +37,7 @@ export default {
     extra: Object,
     dataSoures: {
       type: Array,
-      default: []
+      default: () => []
     },
     key: [String, Number],
     title: String,
@@ -60,26 +61,27 @@ export default {
     }
   },
   ready () {
-    this.defaultIsLeaf = this.isLeaf
-    this._isSync = this.isSync
+    this.childrenIsLeaf = this.isLeaf
+    this.childrenIsSync = this.isSync
     this.deep = this.getDeep()
     this.$on('childSelect', this.handleSelectedByChild)
     this.$nextTick(() => {
       // 注册子组件
       if (this.$parent.$options && this.$parent.$options.role === 'NodeParent') {
         this.$parent.children.push(this)
+        this.$parent.isSync = true
         this.state = this.$parent.state
       }
     })
   },
   data () {
     return {
-      defaultIsLeaf: true,
+      childrenIsLeaf: true,
       expand: false,
       children: [], // 收集孩子组件
       deep: 0,
       state: 0,
-      _isSync: true
+      childrenIsSync: true
     }
   },
   computed: {},
@@ -91,9 +93,7 @@ export default {
   events: {
     'childrenLoadSuccess' (key, data) {
       if (this.key === key) {
-        console.log('childrenLoadSuccess')
-        console.log(data)
-        this._isSync = true
+        this.isSync = true
         this.isLeaf = data.length === 0
         // this.handleExpand()
       } else {
@@ -111,11 +111,12 @@ export default {
         treeNode.setSelect(this.state)
       })
 
-      if (this.isLeaf) {
+      if (this.children.length) {
         this.handleSelect()
       }
     },
-    handleSelect (event, state) {
+    handleSelect ($event, state) {
+      $event && $event.srcEvent.stopPropagation()
       if (state === undefined) {
         state = this.state >= 1 ? 0 : 2
       }

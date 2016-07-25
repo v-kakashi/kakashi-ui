@@ -8,9 +8,9 @@
         :keep-ratio="false"
       >
       </vk-image>
-      <vk-icon @click="handleRemove(item)" value="remove"></vk-icon>
+      <vk-icon v-touch:tap="handleRemove(item)" value="remove"></vk-icon>
     </div>
-    <div class="vk-upload-button" @click="handleAddItem" v-show="items.length < max"
+    <div class="vk-upload-button" v-touch:tap="handleAddItem" v-show="items.length < max"
       :style="{ 'width': width, 'height': height, 'line-height': height}">
       <vk-icon value="add_circle"></vk-icon>
     <div>

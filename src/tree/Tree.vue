@@ -12,7 +12,7 @@
       :on-select="onSelect"
       :on-expand="onExpand"
       :is-leaf="isLeaf"
-      :is-sync="isSync"
+      :is-sync="!!data.isSync"
       @select="onSelect"
       @expand="onExpand"
       >

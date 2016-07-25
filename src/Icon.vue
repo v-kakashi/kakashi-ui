@@ -1,5 +1,5 @@
 <template>
-  <div :class="['vk-icon']" :style="{color:color}"><slot>{{value}}</slot></div>
+  <div :class="['vk-icon', iconClass]" :style="{color:color}"></div>
 </template>
 
 <script>
@@ -11,6 +11,11 @@ export default {
     color: {
       type: String,
       default: ''
+    }
+  },
+  computed: {
+    iconClass () {
+      return 'icon-' + this.value
     }
   }
 }

@@ -18,9 +18,11 @@ import vkTreeNode from '../../src/tree/TreeNode'
 import vkTree from '../../src/tree/Tree'
 import vkTreeNodeIcon from '../../src/tree/TreeNodeIcon'
 import Vue from 'vue'
+import VueTouch from 'vue-touch'
 
 import 'kakashi-theme/src/components/tree.less'
 
+Vue.use(VueTouch)
 new Vue({
   el: "#app",
   data () {

@@ -1,6 +1,6 @@
 <template>
   <li class="vk-tree-node-warp">
-    <div class="vk-tree-node" @click.stop="handleSelect">
+    <div class="vk-tree-node" v-touch:tap="handleSelect">
       <vk-node-check :state="state" :deep="deep"></vk-node-check>
       <slot>
         <vk-image class="vk-tree-image" :src="extra.src" :width="extra.width || '40px'" :height="extra.height || '40px'"></vk-image>
@@ -49,8 +49,8 @@ export default {
     }
   },
   methods: {
-    handleSelect (event, state) {
-      console.log(this.title + '-handleSelect')
+    handleSelect ($event, state) {
+      $event && $event.srcEvent.stopPropagation()
       if (state === undefined) {
         state = this.state === 0 ? 2 : 0
       }

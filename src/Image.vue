@@ -46,14 +46,17 @@ export default {
   methods: {
     _load ($event) {
       if (this.keepRatio) {
-        const img = $event.path[0]
-        getSize(img.src).then(({ width, height }) => {
-          const ratio = width / height
-          if (ratio !== img.width / img.height) {
-            // 只处理宽度缩小的情况
-            img.height = img.width / ratio
-          }
-        })
+        // TODO: BUG
+        if ($event.path) {
+          const img = $event.path[0]
+          getSize(img.src).then(({ width, height }) => {
+            const ratio = width / height
+            if (ratio !== img.width / img.height) {
+              // 只处理宽度缩小的情况
+              img.height = img.width / ratio
+            }
+          })
+        }
       }
     }
   }
