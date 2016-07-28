@@ -2,7 +2,6 @@
   <span
     class="vk-tree-checkbox"
     :class="selectCls"
-    :style="{'margin-right': marginRight}"
   >
     <span class="vk-tree-checkbox-inner"></span>
   </span>
@@ -15,19 +14,11 @@ export default {
     state: {
       type: Number,
       default: 0
-    },
-    deep: {
-      type: Number,
-      default: 0
-    },
-    disable: Boolean
+    }
   },
   computed: {
     selectCls () {
       return CLS_NAMES[this.state]
-    },
-    marginRight () {
-      return (this.deep - 1) * 22 + 'px'
     }
   }
 }

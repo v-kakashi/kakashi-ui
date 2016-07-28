@@ -11,8 +11,10 @@
       :data-soures="data.children"
       :on-select="onSelect"
       :on-expand="onExpand"
+      :disable-checkbox="disableCheckbox"
       :is-leaf="isLeaf"
       :is-sync="!!data.isSync"
+      :sub-title="data.subTitle"
       @select="onSelect"
       @expand="onExpand"
       >
@@ -30,6 +32,8 @@ export default {
     extra: Object,
     dataSoures: Array,
     selectKeys: Array,
+    subTitle: String,
+    disableCheckbox: Boolean,
     isSync: {
       type: Boolean,
       default: true

@@ -1,10 +1,12 @@
 <template>
   <li class="vk-tree-node-warp">
     <div class="vk-tree-node" v-touch:tap="handleSelect">
-      <vk-node-check :state="state" :deep="deep"></vk-node-check>
+      <vk-node-check :state="state" v-show='disableCheckbox'></vk-node-check>
+      <div :style="{'width': (deep - 1) * 22 + 'px'}"></div>
       <slot>
-        <vk-image class="vk-tree-image" :src="extra.src" :width="extra.width || '40px'" :height="extra.height || '40px'"></vk-image>
-        <span class="vk-tree-title" >{{title}}</span>
+        <vk-image class="vk-tree-image"  :keep-ratio="false" :src="extra.src" :width="extra.width || '40px'" :height="extra.height || '40px'"></vk-image>
+        <span v-show="title.length" class="vk-tree-title" :style="{lineHeight: extra.height || '40px'}">{{title}}</span>
+        <span class="vk-tree-subtitle" :style="{lineHeight: extra.height || '40px'}">{{subTitle}}</span>
       </slot>
     </div>
   </li>
@@ -26,6 +28,7 @@ export default {
         height: null
       }
     },
+    subTitle: String,
     title: String,
     state: {
       type: Number,

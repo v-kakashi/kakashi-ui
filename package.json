@@ -1,6 +1,6 @@
 {
   "name": "kakashi-ui",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "一个组件库",
   "author": "limingmin <314407103@qq.com>",
   "main": "./src/kakashi-ui.vue",
@@ -14,7 +14,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-    "kakashi-theme": "^1.0.8",
+    "kakashi-theme": "^1.0.9",
     "vue": "^1.0.21",
     "vue-clickoutside": "^0.1.0",
     "vue-touch": "^1.1.0"

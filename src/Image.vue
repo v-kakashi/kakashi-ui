@@ -6,6 +6,7 @@
       :height="height"
       :alt="alt"
       :title="title"
+      onerror="this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';this.onerror=''"
       @load="_load">
   </div>
 </template>

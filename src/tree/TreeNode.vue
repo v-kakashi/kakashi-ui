@@ -1,22 +1,28 @@
 <template>
   <li class="vk-tree-node-warp">
     <div class="vk-tree-node" v-touch:tap="handleExpand">
-      <vk-node-check :state="state" :deep="deep" v-touch:tap="handleSelect"></vk-node-check>
+      <vk-node-check :state="state" v-show='disableCheckbox' v-touch:tap="handleSelect"></vk-node-check>
+      <div :style="{'width': (deep - 1) * 22 + 'px'}"></div>
       <vk-node-switcher v-if="isSync === false || !!children.length" :expand="expand"></vk-node-switcher>
-      <span class="vk-tree-title" >{{title}}</span>
+      <div class="vk-tree-content">
+        <span class="vk-tree-title" >{{title}}</span>
+        <span class="vk-tree-subtitle" >{{subTitle}}</span>
+      </div>
     </div>
     <ul v-show="expand" class="vk-tree-child vk-tree-child-open">
       <slot></slot>
       <component
         :is="data.type ? data.type : 'vkTreeNode'"
         v-for="data in dataSoures"
+        track-by="$index"
         @select="onSelect"
         @expand="onExpand"
         :extra="data"
-        track-by="$index"
         :selected="data.selected"
         :title="data.title"
         :key="data.id"
+        :disable-checkbox="disableCheckbox"
+        :sub-title="data.subTitle"
         :is-leaf="childrenIsLeaf"
         :is-sync="!!data.isSync || childrenIsSync"
         :data-soures="data.children">
@@ -39,6 +45,7 @@ export default {
       type: Array,
       default: () => []
     },
+    subTitle: String,
     key: [String, Number],
     title: String,
     disabled: Boolean,
@@ -110,8 +117,8 @@ export default {
         // 跟随父亲的状态
         treeNode.setSelect(this.state)
       })
-
-      if (this.children.length) {
+      // 如果数据已同步，且没有子节点就触发选中事件
+      if (this.children.length === 0 && this.isSync) {
         this.handleSelect()
       }
     },
