@@ -15,7 +15,7 @@
           </div>
         </slot>
         <slot name="after">
-          <vk-icon v-if="after" class="vk-cell-after">{{after}}</vk-icon>
+          <vk-icon v-if="after" class="vk-cell-after" :value="after"></vk-icon>
         </slot>
       </div>
       <div class="vk-cell-body" v-if="label || ext">

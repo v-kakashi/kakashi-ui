@@ -2,7 +2,7 @@
   <li class="vk-tree-node-warp">
     <div class="vk-tree-node" v-touch:tap="handleExpand">
       <vk-node-check :state="state" v-show='disableCheckbox' v-touch:tap="handleSelect"></vk-node-check>
-      <div :style="{'width': (deep - 1) * 22 + 'px'}"></div>
+      <div :style="{'width': (deep - 1) * 22 + 'px'}" v-touch:tap="handleSelect"></div>
       <vk-node-switcher v-if="isSync === false || !!children.length" :expand="expand"></vk-node-switcher>
       <div class="vk-tree-content">
         <span class="vk-tree-title" >{{title}}</span>
