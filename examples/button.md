@@ -50,6 +50,12 @@ title: Button 按钮控件
       <vk-button icon="box">按钮3</vk-button>
     </div>
   </div>
+  <div class="group">
+    <header class="group-header">事件</header>
+    <div class="group-body">
+      <vk-button :on-touch="touch">单击事件</vk-button>
+    </div>
+  </div>
 </div>
 ```
 
@@ -63,6 +69,28 @@ new Vue({
   el: "#app",
   components: {
     vkButton
+  },
+  methods: {
+    touch ($event) {
+      alert('触发点击事件')
+    }
   }
 })
 ```
+
+## Props
+
+| 参数      | 说明                                     | 类型       | 默认值 |
+|-----------|------------------------------------------|------------|-------|
+| icon | 按钮的图标由 [vkIcon](../icon.html) 组件提供显示 | String  | '' |
+| disabled | 是否禁用图标 | Boolean  | false |
+| plain | 是否设置成幽灵按钮 | Boolean | false |
+| type	 | 按钮类型，只接受	default , danger , primary | String | 'default' |
+| size | 安钮大小，只接受	small , normal , large  | String | 'normal' |
+
+---
+
+## 事件
+| 参数      | 说明                                     | 入参       |
+|-----------|-----------------------------------------|------------|
+| onTouch | 点击 button 按钮 （只在手机模式下生效） | $event |

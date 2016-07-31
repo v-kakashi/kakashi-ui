@@ -47,12 +47,17 @@ export default {
           'large'
         ].indexOf(value) > -1
       }
+    },
+    onTouch: {
+      type: Function,
+      default: () => {}
     }
   },
   methods: {
     handleClick ($event) {
       if (this.disabled === false) {
-        this.$dispatch('vk-button-touch')
+        this.onTouch($event)
+        // this.$dispatch('vk-button-touch')
       }
     }
   },

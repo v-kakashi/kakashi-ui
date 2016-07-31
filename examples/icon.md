@@ -189,5 +189,3 @@ new Vue({
 | value | 图标的图案 | String  | ''    |
 | color | 图标颜色 | String | '' |
 | class | 图标的 className | String | '' |
-
-## Slot

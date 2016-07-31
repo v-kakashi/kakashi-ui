@@ -50,8 +50,3 @@ new Vue({
   }
 })
 ```
-
-
-## desc
-一个组织机构树,
-asd;jfl;ajsdfopiuasd

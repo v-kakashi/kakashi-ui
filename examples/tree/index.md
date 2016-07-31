@@ -53,6 +53,24 @@ new Vue({
 })
 ```
 
+
+## vkTree
+
+| 参数      | 说明                                     | 类型       | 默认值 |
+|-----------|------------------------------------------|------------|-------|
+| selectKeys | 选中选项 | Array  | null    |
+| extra | 扩展字段 | Object | null |
+| dataSoures | 数据源 | Array | [] |
+
+
+## 事件
+
+| 参数      | 说明                                     | 入参 |
+|----------|-----------------------------------------|------|
+| onSelect | 选中节点事件 | 选中的节点数据 |
+
+---
+
 ## vkTreeNode
 
 | 参数      | 说明                                     | 类型       | 默认值 |
@@ -61,6 +79,12 @@ new Vue({
 | extra | 扩展字段 | Object | null |
 | dataSoures | 数据源 | Array | [] |
 
+
+---
+
+## vkTreeNodeIcon
+
+---
 
 ## vkNodeCheck
 
