@@ -20,7 +20,6 @@ import vkMsgbox from '../../src/msgbox'
 import vkButton from '../../src/button'
 import Vue from 'vue'
 
-import 'kakashi-theme/src/components/image.less'
 import 'kakashi-theme/src/components/button.less'
 import 'kakashi-theme/src/components/msgbox.less'
 

@@ -145,7 +145,12 @@
           return
         }
         this.visible = false
-        this.onAction(action)
+        var visible = this.onAction(action)
+        if (typeof visible === 'boolean') {
+          this.visible = visible
+        } else {
+          this.visible = false
+        }
       },
 
       validate () {
