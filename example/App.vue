@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import vkTreeNode from 'src/tree/TreeNode'
-import vkTree from 'src/tree/Tree'
+import vkTreeNode from 'src/tree/treeNode'
+import vkTree from 'src/tree/tree'
 export default {
   data () {
     return {
