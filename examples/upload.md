@@ -1,4 +1,5 @@
 ---
+category: 组件
 title: Upload 上传图片组件
 ---
 
@@ -25,12 +26,9 @@ import vkUpload from 'src/upload'
 import vkCell from 'src/cell'
 import vkField from 'src/field'
 import Vue from 'vue'
-import VueTouch from 'vue-touch'
 
 import 'kakashi-theme/src/components/field.less'
 import 'kakashi-theme/src/components/upload.less'
-
-Vue.use(VueTouch)
 
 new Vue({
   el: "#app",

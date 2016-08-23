@@ -1,4 +1,5 @@
 ---
+category: 组件
 title: Image 图片控件
 ---
 

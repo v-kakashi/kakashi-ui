@@ -11,6 +11,7 @@
 <script>
   import Spinner from 'mint-spinner'
 
+  import 'kakashi-theme/src/components/spinner.less'
   export default {
 
     components: {

@@ -1,9 +1,9 @@
 <template>
   <li class="vk-tree-node-warp">
-    <div class="vk-tree-node" v-touch:tap="handleExpand">
-      <vk-node-check :state="state" v-show='disableCheckbox' v-touch:tap="handleSelect"></vk-node-check>
-      <div :style="{'width': (deep - 1) * 22 + 'px'}" v-touch:tap="handleSelect"></div>
-      <vk-node-switcher v-if="isSync === false || !!children.length" :expand="expand"></vk-node-switcher>
+    <div class="vk-tree-node" @click="handleExpand">
+      <vk-node-check :state="state" v-show='disableCheckbox' @click="handleSelect"></vk-node-check>
+      <div :style="{'width': (deep - 1) * 22 + 'px'}" @click="handleSelect"></div>
+      <vk-node-switcher v-if="isSync === false || !!children.length" :is-loading="syncState === 'SYNC_ING'" :expand="expand"></vk-node-switcher>
       <div class="vk-tree-content">
         <span class="vk-tree-title" >{{title}}</span>
         <span class="vk-tree-subtitle" >{{subTitle}}</span>
@@ -12,20 +12,20 @@
     <ul v-show="expand" class="vk-tree-child vk-tree-child-open">
       <slot></slot>
       <component
-        :is="data.type ? data.type : 'vkTreeNode'"
-        v-for="data in dataSoures"
+        :is="nodeData.type ? nodeData.type : 'vkTreeNode'"
+        v-for="nodeData in dataSoures"
         track-by="$index"
         @select="onSelect"
         @expand="onExpand"
-        :extra="data"
-        :selected="data.selected"
-        :title="data.title"
-        :key="data.id"
+        :data="nodeData.extra"
+        :selected="nodeData.selected"
+        :title="nodeData.title"
+        :key="nodeData.id"
         :disable-checkbox="disableCheckbox"
-        :sub-title="data.subTitle"
+        :sub-title="nodeData.subTitle"
         :is-leaf="childrenIsLeaf"
-        :is-sync="!!data.isSync || childrenIsSync"
-        :data-soures="data.children">
+        :sync-state="!!nodeData.isSync || childrenIsSync? 'COMPLETE_SYNC' : 'NOT_SYNC'"
+        :data-soures="nodeData.children">
       </component>
     </ul>
   </li>
@@ -35,12 +35,16 @@
 import vkNodeCheck from './nodeCheck'
 import vkNodeSwitcher from './nodeSwitcher'
 import vkTreeNodeIcon from './treeNodeIcon'
-
+import mixData from '../mix/data'
+const SYNC_ING = 'SYNC_ING'
+const NOT_SYNC = 'NOT_SYNC'
+const COMPLETE_SYNC = 'COMPLETE_SYNC'
 export default {
+  mixins: [mixData],
   name: 'vkTreeNode',
   role: 'NodeParent',
   props: {
-    extra: Object,
+    data: Object,
     dataSoures: {
       type: Array,
       default: () => []
@@ -50,9 +54,9 @@ export default {
     title: String,
     disabled: Boolean,
     disableCheckbox: Boolean,
-    isSync: {
-      type: Boolean,
-      default: true
+    syncState: {
+      type: String,
+      default: COMPLETE_SYNC
     },
     onSelect: {
       type: Function,
@@ -91,12 +95,12 @@ export default {
       childrenIsSync: true
     }
   },
-  computed: {},
   watch: {
     children (children) {
       this.$dispatch('children-mount', children)
     }
   },
+  /*
   events: {
     'childrenLoadSuccess' (key, data) {
       if (this.key === key) {
@@ -108,14 +112,32 @@ export default {
       }
     }
   },
+  */
+  computed: {
+    isSync: {
+      get: function () {
+        return this.syncState === COMPLETE_SYNC
+      },
+      set: function (newValue) {
+        this.syncState = newValue ? COMPLETE_SYNC : NOT_SYNC
+      }
+    }
+  },
   methods: {
     handleExpand () {
+      // 如果该节点正在同步，不就展开该节点
+      if (this.syncState === SYNC_ING) {
+        return
+      }
+      this.syncState === NOT_SYNC && (this.syncState = SYNC_ING)
       this.expand = !this.expand
+
       this.$dispatch('expand', this)
       // 通知子组件选中
       this.children.forEach(treeNode => {
         // 跟随父亲的状态
-        treeNode.setSelect(this.state)
+        // 0 为 未选择，2为已选择
+        (this.state === 0 || this.state === 2) && treeNode.setSelect(this.state)
       })
       // 如果数据已同步，且没有子节点就触发选中事件
       if (this.children.length === 0 && this.isSync) {
@@ -123,7 +145,7 @@ export default {
       }
     },
     handleSelect ($event, state) {
-      $event && $event.srcEvent.stopPropagation()
+      $event && $event.stopPropagation()
       if (state === undefined) {
         state = this.state >= 1 ? 0 : 2
       }

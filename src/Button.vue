@@ -55,8 +55,6 @@ export default {
         $event.stopPropagation()
         $event.preventDefault()
       }
-      // this.onTouch($event)
-      // this.$dispatch('vk-button-touch')
     }
   },
   components: {

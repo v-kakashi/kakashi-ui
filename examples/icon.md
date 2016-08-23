@@ -1,4 +1,5 @@
 ---
+category: 组件
 title: Icon 图标控件
 ---
 
@@ -65,9 +66,6 @@ title: Icon 图标控件
         <vk-icon value='favorite'></vk-icon> <div class="icon-text">favorite</div>
       </div>
       <div class="icon-cell">
-        <vk-icon value='favorite_border'></vk-icon> <div class="icon-text">favorite1</div>
-      </div>
-      <div class="icon-cell">
         <vk-icon value='folder'></vk-icon> <div class="icon-text">folder</div>
       </div>
       <div class="icon-cell">
@@ -131,15 +129,6 @@ title: Icon 图标控件
         <vk-icon value='zoom_map'></vk-icon> <div class="icon-text">zoom_map</div>
       </div>
       <div class="icon-cell">
-        <vk-icon value='nav_before'></vk-icon> <div class="icon-text">nav_before</div>
-      </div>
-      <div class="icon-cell">
-        <vk-icon value='nav_next'></vk-icon> <div class="icon-text">nav_next</div>
-      </div>
-      <div class="icon-cell">
-        <vk-icon value='success'></vk-icon> <div class="icon-text">success</div>
-      </div>
-      <div class="icon-cell">
         <vk-icon value='warning'></vk-icon> <div class="icon-text">warning</div>
       </div>
       <div class="icon-cell">
@@ -154,13 +143,13 @@ title: Icon 图标控件
     <header class="group-header">不同颜色</header>
     <div class="group-body group-body-icons">
       <div class="icon-cell">
-        <vk-icon color="red">box</vk-icon> <div class="icon-text">red</div>
+        <vk-icon color="red" value="box"></vk-icon> <div class="icon-text">red</div>
       </div>
       <div class="icon-cell">
-        <vk-icon color="blue">box</vk-icon> <div class="icon-text">blue</div>
+        <vk-icon color="blue" value="box"></vk-icon> <div class="icon-text">blue</div>
       </div>
       <div class="icon-cell">
-        <vk-icon color="#2baee9">box</vk-icon> <div class="icon-text">#2baee9</div>
+        <vk-icon color="#2baee9" value="box"></vk-icon> <div class="icon-text">#2baee9</div>
       </div>
     </div>
   </div>

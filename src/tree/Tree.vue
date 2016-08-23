@@ -4,7 +4,7 @@
     <component
       v-for="data in dataSoures"
       :is="data.type ? data.type : 'vkTreeNode'"
-      :extra="data"
+      :data="data.extra"
       :selected="data.selected"
       :title="data.title"
       :key="data.id"
@@ -13,7 +13,7 @@
       :on-expand="onExpand"
       :disable-checkbox="disableCheckbox"
       :is-leaf="isLeaf"
-      :is-sync="!!data.isSync"
+      :sync-state="!!data.isSync ? 'COMPLETE_SYNC' : 'NOT_SYNC'"
       :sub-title="data.subTitle"
       @select="onSelect"
       @expand="onExpand"
@@ -25,11 +25,11 @@
 <script>
 import vkTreeNodeIcon from './treeNodeIcon'
 import vkTreeNode from './treeNode'
+
 export default {
   name: 'vkTree',
   role: 'NodeRoot',
   props: {
-    extra: Object,
     dataSoures: Array,
     selectKeys: Array,
     subTitle: String,

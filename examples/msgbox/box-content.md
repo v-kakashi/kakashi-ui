@@ -1,4 +1,5 @@
 ---
+category: 组件
 title: Msgbox 对话框组件
 ---
 
