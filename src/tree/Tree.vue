@@ -4,7 +4,7 @@
     <component
       v-for="data in dataSoures"
       :is="data.type ? data.type : 'vkTreeNode'"
-      :data="data.extra"
+      :data="data"
       :selected="data.selected"
       :title="data.title"
       :key="data.id"

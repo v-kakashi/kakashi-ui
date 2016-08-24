@@ -1,6 +1,6 @@
 {
   "name": "kakashi-ui",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "基于 vue 的一套 ui 组件库",
   "author": "limingmin <314407103@qq.com>",
   "main": "./src/kakashi-ui.vue",
@@ -15,7 +15,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-    "kakashi-theme": "^1.0.13",
+    "kakashi-theme": "^1.0.15",
     "mint-spinner": "^0.2.2",
     "vue": "^1.0.26",
     "vue-clickoutside": "^0.1.0",

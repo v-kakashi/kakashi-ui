@@ -17,7 +17,7 @@
         track-by="$index"
         @select="onSelect"
         @expand="onExpand"
-        :data="nodeData.extra"
+        :data="nodeData"
         :selected="nodeData.selected"
         :title="nodeData.title"
         :key="nodeData.id"
@@ -39,6 +39,7 @@ import mixData from '../mix/data'
 const SYNC_ING = 'SYNC_ING'
 const NOT_SYNC = 'NOT_SYNC'
 const COMPLETE_SYNC = 'COMPLETE_SYNC'
+console.log(mixData)
 export default {
   mixins: [mixData],
   name: 'vkTreeNode',
