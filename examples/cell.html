@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cell 单元格控件</title>
+    <link href="/tpl/static/css/normalize.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/anticon.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/markdown.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/main.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/hl.css" rel="stylesheet"/>
+    <style type="text/css">
+      
+    </style>
+    <script>
+    var relativePath = "";
+    </script>
+    <script src="/tpl/static/js/jquery-3.1.0.min.js" charset="UTF-8"></script>
+    <script src="/tpl/static/js/handlebars-v4.0.5.js" charset="UTF-8"></script>
+    <script src="/tpl/static/js/element.js" charset="UTF-8"></script>
+    <script id="menu-template" type="text/x-handlebars-template">
+      <ul class="ant-menu ant-menu-inline aside-container ant-menu-light ant-menu-root" >
+        {{#each menu}}
+          <li class="ant-menu-submenu-inline ant-menu-submenu-open ant-menu-submenu">
+            <div class="ant-menu-submenu-title">
+              <h4>{{category}}</h4>
+            </div>
+            <ul class="ant-menu ant-menu-inline ant-menu-sub">
+              {{#each items}}
+                {{#if isSelf}}
+                <li class="ant-menu-item ant-menu-item-selected">
+                  <a href="{{url}}"><span>{{title}}</span></a>
+                </li>
+                {{else if isNode}}
+                <div class="ant-menu-item-group-title">{{title}}</div>
+                {{else}}
+                <li class="ant-menu-item ">
+                  <a href="{{url}}"><span>{{title}}</span></a>
+                </li>
+                {{/if}}
+                {{#if children}}
+                  <ul class="ant-menu-item-group-list">
+                  {{#each children}}
+                    {{#if isSelf}}
+                    <li class="ant-menu-item ant-menu-item-selected" style="padding-left: 48px;">
+                    {{else}}
+                    <li class="ant-menu-item" style="padding-left: 48px;">
+                    {{/if}}
+                      <a href="{{url}}"><span>{{title}}</span></a>
+                    </li>
+                  {{/each}}
+                  </ul>
+                {{/if}}
+              {{/each}}
+            </ul>
+          </li>
+        {{/each}}
+      </ul>
+    </script>
+  </head>
+  <body>
+    cell
+    <header id="header" class="clearfix">
+      <div class="ant-row">
+        <div class="ant-col-4">
+          <i class="nav-phone-icon anticon anticon-menu"></i>
+          <a id="logo" href="/">
+            <img alt="logo" src="/tpl/static/img/logo.png" />
+            <span>kakashi-ui</span>
+          </a>
+        </div>
+        <div class="nav  ant-col-xs-0 ant-col-sm-17 ant-col-md-18 ant-col-lg-20" style="display: block;">
+          <ul id="nav" class="ant-menu ant-menu-horizontal  ant-menu-light ant-menu-root">
+            <li class="ant-menu-item">
+              <a href="https://github.com/v-kakashi/kakashi-ui"><span>GitHub</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="wrapper">
+      <div id="menu" class="demos-anchor menu">
+
+      </div>
+      <div class="wrapper-content">
+        <article>
+          <section class="markdown">
+            <h1>Cell 单元格控件</h1>
+            
+              <h2>说明</h2>
+<p>单元格，可用作展示列表信息、链接或者表单等。</p>
+<h2>代码演示</h2>
+<div class="highlight"><pre><code language=html><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group-header"</span>&gt;</span>列表样式<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"新闻标题1"</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"企业传播处"</span> <span class="hljs-attr">ext</span>=<span class="hljs-string">"2016-06-16 11:27"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-cell</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"新闻标题2"</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"企业传播处"</span> <span class="hljs-attr">ext</span>=<span class="hljs-string">"2016-06-16 11:27"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-cell</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"不能点击"</span> <span class="hljs-attr">:is-link</span>=<span class="hljs-string">"false"</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"企业传播处"</span> <span class="hljs-attr">ext</span>=<span class="hljs-string">"2016-06-16 11:27"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-cell</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"超长新闻标题超长新闻标题超长新闻标题超长新闻标题超长新闻标题超长新闻标题超长新闻标题1"</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"企业传播处"</span> <span class="hljs-attr">ext</span>=<span class="hljs-string">"2016-06-16 11:27"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-cell</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group-header"</span>&gt;</span>单元格样式<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-cell</span> <span class="hljs-attr">v-bind</span>=<span class="hljs-string">"a"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"福建省"</span> <span class="hljs-attr">is-link</span> <span class="hljs-attr">after</span>=<span class="hljs-string">"nav_next"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-cell</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"自定义图标1"</span> <span class="hljs-attr">is-link</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">slot</span>=<span class="hljs-string">"after"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/static/img/logo.png"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 20px;"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">vk-cell</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-cell</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">"apps"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"带图标样式"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-cell</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-cell</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"自定义图标2"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">slot</span>=<span class="hljs-string">"icon"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/static/img/logo.png"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 20px; margin-right:4px;"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">vk-cell</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group-header"</span>&gt;</span>自定义内容<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-cell</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">slot</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"margin-bottom:4px;"</span>&gt;</span>自定义标题<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>自定义内容<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>     
+    <span class="hljs-tag">&lt;/<span class="hljs-name">vk-cell</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre></div>
+<div class="highlight"><pre><code language=js><span class="hljs-keyword">import</span> vkCell <span class="hljs-keyword">from</span> <span class="hljs-string">'src/cell'</span>
+<span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">'kakashi-theme/src/components/cell.less'</span>
+
+<span class="hljs-keyword">new</span> Vue({
+  el: <span class="hljs-string">"#app"</span>,
+  data () {
+    <span class="hljs-keyword">return</span> {
+      a: { title: <span class="hljs-string">'组织机构'</span> }
+    }
+  },
+  components: {
+    vkCell
+  }
+})</code></pre></div>
+<h2>Props</h2>
+<table><thead><tr><th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th></tr></thead>
+<tbody><tr><td>icon</td>
+<td>左侧图标默认由 <a href="./icon.html">vkIcon</a> 组件提供显示，slot after 可以自定义的图标</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>after</td>
+<td>右侧图标默认由 <a href="./icon.html">vkIcon</a> 组件提供显示，slot after 可以自定义图标</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>title</td>
+<td>标题</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>label</td>
+<td>备注信息</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>value</td>
+<td>右侧显示文字</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>ext</td>
+<td>扩展信息，在右下角显示</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>is-link</td>
+<td>可点击的链接</td>
+<td>Boolean</td>
+<td>true</td></tr></tbody></table>
+<h2>Slot</h2>
+<table><thead><tr><th>name</th>
+<th>说明</th></tr></thead>
+<tbody><tr><td>-</td>
+<td>自定义布局</td></tr>
+<tr><td>title</td>
+<td>同 title, 会覆盖 title 属性</td></tr>
+<tr><td>icon</td>
+<td>同 icon, 会覆盖 icon 属性，例如可以传入图片</td></tr>
+<tr><td>after</td>
+<td>同 after, 会覆盖 after 属性，例如可以传入图片</td></tr></tbody></table>
+            
+        </article>
+        <div class="header">
+          <h1></h1>
+        </div>
+        
+          <div class="example">
+            <div class="phone">
+              <iframe class="example-html demo-page" frameborder="0" src="./cell-demo.html"> </iframe>
+            </div>
+          </div>
+        
+      </div>
+  </body>
+</html>

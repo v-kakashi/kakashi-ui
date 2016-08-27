@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Field 表单元素</title>
+    <link href="/tpl/static/css/normalize.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/anticon.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/markdown.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/main.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/hl.css" rel="stylesheet"/>
+    <style type="text/css">
+      
+    </style>
+    <script>
+    var relativePath = "";
+    </script>
+    <script src="/tpl/static/js/jquery-3.1.0.min.js" charset="UTF-8"></script>
+    <script src="/tpl/static/js/handlebars-v4.0.5.js" charset="UTF-8"></script>
+    <script src="/tpl/static/js/element.js" charset="UTF-8"></script>
+    <script id="menu-template" type="text/x-handlebars-template">
+      <ul class="ant-menu ant-menu-inline aside-container ant-menu-light ant-menu-root" >
+        {{#each menu}}
+          <li class="ant-menu-submenu-inline ant-menu-submenu-open ant-menu-submenu">
+            <div class="ant-menu-submenu-title">
+              <h4>{{category}}</h4>
+            </div>
+            <ul class="ant-menu ant-menu-inline ant-menu-sub">
+              {{#each items}}
+                {{#if isSelf}}
+                <li class="ant-menu-item ant-menu-item-selected">
+                  <a href="{{url}}"><span>{{title}}</span></a>
+                </li>
+                {{else if isNode}}
+                <div class="ant-menu-item-group-title">{{title}}</div>
+                {{else}}
+                <li class="ant-menu-item ">
+                  <a href="{{url}}"><span>{{title}}</span></a>
+                </li>
+                {{/if}}
+                {{#if children}}
+                  <ul class="ant-menu-item-group-list">
+                  {{#each children}}
+                    {{#if isSelf}}
+                    <li class="ant-menu-item ant-menu-item-selected" style="padding-left: 48px;">
+                    {{else}}
+                    <li class="ant-menu-item" style="padding-left: 48px;">
+                    {{/if}}
+                      <a href="{{url}}"><span>{{title}}</span></a>
+                    </li>
+                  {{/each}}
+                  </ul>
+                {{/if}}
+              {{/each}}
+            </ul>
+          </li>
+        {{/each}}
+      </ul>
+    </script>
+  </head>
+  <body>
+    field
+    <header id="header" class="clearfix">
+      <div class="ant-row">
+        <div class="ant-col-4">
+          <i class="nav-phone-icon anticon anticon-menu"></i>
+          <a id="logo" href="/">
+            <img alt="logo" src="/tpl/static/img/logo.png" />
+            <span>kakashi-ui</span>
+          </a>
+        </div>
+        <div class="nav  ant-col-xs-0 ant-col-sm-17 ant-col-md-18 ant-col-lg-20" style="display: block;">
+          <ul id="nav" class="ant-menu ant-menu-horizontal  ant-menu-light ant-menu-root">
+            <li class="ant-menu-item">
+              <a href="https://github.com/v-kakashi/kakashi-ui"><span>GitHub</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="wrapper">
+      <div id="menu" class="demos-anchor menu">
+
+      </div>
+      <div class="wrapper-content">
+        <article>
+          <section class="markdown">
+            <h1>Field 表单元素</h1>
+            
+              <h2>说明</h2>
+<p>常用的的表单输入元素，和表单状态</p>
+<h2>代码演示</h2>
+<div class="highlight"><pre><code language=html><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group-header"</span>&gt;</span>默认样式<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-field</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"用户名"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"请输入用户名"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-field</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"邮箱"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"请输入邮箱"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"email"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-field</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"密码"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"请输入密码"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-field</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"手机号"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"请输入手机号"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"tel"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-field</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"网站"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"请输入网址"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"url"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-field</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"数字"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"请输入数字"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"number"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-field</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"生日"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"请输入生日"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"date"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-field</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"没有 label"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-field</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"自我介绍"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"自我介绍"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"textarea"</span> <span class="hljs-attr">rows</span>=<span class="hljs-string">"4"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-field</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group-header"</span>&gt;</span>图标样式<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-field</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">"apps"</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"应用名"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"请输入应用名"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-field</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">"pin"</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"地址"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"福州市"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-field</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">"iphone"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"请输入手机号"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-field</span> <span class="hljs-attr">icon</span>=<span class="hljs-string">"iphone"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"请输入手机号"</span> <span class="hljs-attr">state</span>=<span class="hljs-string">"success"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-field</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group-header"</span>&gt;</span>状态样式<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-field</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"帐号"</span> <span class="hljs-attr">state</span>=<span class="hljs-string">"success"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"请输入帐号"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-field</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"帐号"</span> <span class="hljs-attr">state</span>=<span class="hljs-string">"warning"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"请输入帐号"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-field</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-field</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"帐号"</span> <span class="hljs-attr">state</span>=<span class="hljs-string">"error"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"请输入帐号"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-field</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre></div>
+<div class="highlight"><pre><code language=js><span class="hljs-keyword">import</span> vkField <span class="hljs-keyword">from</span> <span class="hljs-string">'src/field'</span>
+<span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">'kakashi-theme/src/components/field.less'</span>
+
+<span class="hljs-keyword">new</span> Vue({
+  el: <span class="hljs-string">"#app"</span>,
+  components: {
+    vkField
+  }
+})</code></pre></div>
+<h2>Props</h2>
+<table><thead><tr><th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th></tr></thead>
+<tbody><tr><td>type</td>
+<td>输入框类型 , 只接受 text, number, email, url, tel, date, datetime, password, textarea</td>
+<td>String</td>
+<td>&#39;text&#39;</td></tr>
+<tr><td>label</td>
+<td>标签</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>rows</td>
+<td>类型为 textarea 时可指定高度（显示行数）</td>
+<td>Number</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>value</td>
+<td>绑定表单输入值</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>placeholder</td>
+<td>占位内容</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>state</td>
+<td>表单校验状态样式，只接受 error, warning, success</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>after</td>
+<td>尾部图标 由 <a href="./icon.html">vkIcon</a> 组件提供显示</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>icon</td>
+<td>头部图标 由 <a href="./icon.html">vkIcon</a> 组件提供显示</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr></tbody></table>
+<h2>Slot</h2>
+<table><thead><tr><th>name</th>
+<th>说明</th></tr></thead>
+<tbody><tr><td>-</td>
+<td>自定义布局右侧</td></tr></tbody></table>
+            
+        </article>
+        <div class="header">
+          <h1></h1>
+        </div>
+        
+          <div class="example">
+            <div class="phone">
+              <iframe class="example-html demo-page" frameborder="0" src="./field-demo.html"> </iframe>
+            </div>
+          </div>
+        
+      </div>
+  </body>
+</html>

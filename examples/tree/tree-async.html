@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tree 树形控件(异步加载)</title>
+    <link href="/tpl/static/css/normalize.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/anticon.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/markdown.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/main.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/hl.css" rel="stylesheet"/>
+    <style type="text/css">
+      
+    </style>
+    <script>
+    var relativePath = "";
+    </script>
+    <script src="/tpl/static/js/jquery-3.1.0.min.js" charset="UTF-8"></script>
+    <script src="/tpl/static/js/handlebars-v4.0.5.js" charset="UTF-8"></script>
+    <script src="/tpl/static/js/element.js" charset="UTF-8"></script>
+    <script id="menu-template" type="text/x-handlebars-template">
+      <ul class="ant-menu ant-menu-inline aside-container ant-menu-light ant-menu-root" >
+        {{#each menu}}
+          <li class="ant-menu-submenu-inline ant-menu-submenu-open ant-menu-submenu">
+            <div class="ant-menu-submenu-title">
+              <h4>{{category}}</h4>
+            </div>
+            <ul class="ant-menu ant-menu-inline ant-menu-sub">
+              {{#each items}}
+                {{#if isSelf}}
+                <li class="ant-menu-item ant-menu-item-selected">
+                  <a href="{{url}}"><span>{{title}}</span></a>
+                </li>
+                {{else if isNode}}
+                <div class="ant-menu-item-group-title">{{title}}</div>
+                {{else}}
+                <li class="ant-menu-item ">
+                  <a href="{{url}}"><span>{{title}}</span></a>
+                </li>
+                {{/if}}
+                {{#if children}}
+                  <ul class="ant-menu-item-group-list">
+                  {{#each children}}
+                    {{#if isSelf}}
+                    <li class="ant-menu-item ant-menu-item-selected" style="padding-left: 48px;">
+                    {{else}}
+                    <li class="ant-menu-item" style="padding-left: 48px;">
+                    {{/if}}
+                      <a href="{{url}}"><span>{{title}}</span></a>
+                    </li>
+                  {{/each}}
+                  </ul>
+                {{/if}}
+              {{/each}}
+            </ul>
+          </li>
+        {{/each}}
+      </ul>
+    </script>
+  </head>
+  <body>
+    tree/tree-async
+    <header id="header" class="clearfix">
+      <div class="ant-row">
+        <div class="ant-col-4">
+          <i class="nav-phone-icon anticon anticon-menu"></i>
+          <a id="logo" href="/">
+            <img alt="logo" src="/tpl/static/img/logo.png" />
+            <span>kakashi-ui</span>
+          </a>
+        </div>
+        <div class="nav  ant-col-xs-0 ant-col-sm-17 ant-col-md-18 ant-col-lg-20" style="display: block;">
+          <ul id="nav" class="ant-menu ant-menu-horizontal  ant-menu-light ant-menu-root">
+            <li class="ant-menu-item">
+              <a href="https://github.com/v-kakashi/kakashi-ui"><span>GitHub</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="wrapper">
+      <div id="menu" class="demos-anchor menu">
+
+      </div>
+      <div class="wrapper-content">
+        <article>
+          <section class="markdown">
+            <h1>Tree 树形控件(异步加载)</h1>
+            
+              <h2>代码演示</h2>
+<div class="highlight"><pre><code language=html><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">vk-tree</span> <span class="hljs-attr">:data-soures</span>=<span class="hljs-string">"data"</span>  <span class="hljs-attr">:disable-checkbox</span>=<span class="hljs-string">"true"</span>  <span class="hljs-attr">:is-async</span>=<span class="hljs-string">"true"</span>  <span class="hljs-attr">:on-expand</span>=<span class="hljs-string">"expand"</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">vk-tree</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre></div>
+<div class="highlight"><pre><code language=js><span class="hljs-keyword">import</span> vkTree <span class="hljs-keyword">from</span> <span class="hljs-string">'../../src/tree/Tree'</span>
+<span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">'kakashi-theme/src/components/tree.less'</span>
+
+<span class="hljs-keyword">new</span> Vue({
+  el: <span class="hljs-string">"#app"</span>,
+  data () {
+    <span class="hljs-keyword">return</span> {
+      data : [
+        { title: <span class="hljs-string">'Ab'</span> }
+      ]
+    }
+  },
+  methods: {
+    expand (node) {
+      <span class="hljs-keyword">if</span>(node.isSync == <span class="hljs-literal">false</span>) {
+        setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+          <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i =<span class="hljs-number">0</span> ; i &lt; <span class="hljs-number">10</span> ; ++i) {
+            node.dataSoures.push({ title: <span class="hljs-string">`A<span class="hljs-subst">${i}</span>`</span>, children: []})
+          }        
+        }, <span class="hljs-number">1000</span>)
+      }
+      <span class="hljs-built_in">console</span>.log(nodenode)
+    }
+  },
+  components: {
+    vkTree
+  }
+})</code></pre></div>
+            
+        </article>
+        <div class="header">
+          <h1></h1>
+        </div>
+        
+          <div class="example">
+            <div class="phone">
+              <iframe class="example-html demo-page" frameborder="0" src="./tree-async-demo.html"> </iframe>
+            </div>
+          </div>
+        
+      </div>
+  </body>
+</html>

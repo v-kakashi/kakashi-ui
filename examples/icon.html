@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Icon 图标控件</title>
+    <link href="/tpl/static/css/normalize.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/anticon.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/markdown.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/main.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/hl.css" rel="stylesheet"/>
+    <style type="text/css">
+      
+    </style>
+    <script>
+    var relativePath = "";
+    </script>
+    <script src="/tpl/static/js/jquery-3.1.0.min.js" charset="UTF-8"></script>
+    <script src="/tpl/static/js/handlebars-v4.0.5.js" charset="UTF-8"></script>
+    <script src="/tpl/static/js/element.js" charset="UTF-8"></script>
+    <script id="menu-template" type="text/x-handlebars-template">
+      <ul class="ant-menu ant-menu-inline aside-container ant-menu-light ant-menu-root" >
+        {{#each menu}}
+          <li class="ant-menu-submenu-inline ant-menu-submenu-open ant-menu-submenu">
+            <div class="ant-menu-submenu-title">
+              <h4>{{category}}</h4>
+            </div>
+            <ul class="ant-menu ant-menu-inline ant-menu-sub">
+              {{#each items}}
+                {{#if isSelf}}
+                <li class="ant-menu-item ant-menu-item-selected">
+                  <a href="{{url}}"><span>{{title}}</span></a>
+                </li>
+                {{else if isNode}}
+                <div class="ant-menu-item-group-title">{{title}}</div>
+                {{else}}
+                <li class="ant-menu-item ">
+                  <a href="{{url}}"><span>{{title}}</span></a>
+                </li>
+                {{/if}}
+                {{#if children}}
+                  <ul class="ant-menu-item-group-list">
+                  {{#each children}}
+                    {{#if isSelf}}
+                    <li class="ant-menu-item ant-menu-item-selected" style="padding-left: 48px;">
+                    {{else}}
+                    <li class="ant-menu-item" style="padding-left: 48px;">
+                    {{/if}}
+                      <a href="{{url}}"><span>{{title}}</span></a>
+                    </li>
+                  {{/each}}
+                  </ul>
+                {{/if}}
+              {{/each}}
+            </ul>
+          </li>
+        {{/each}}
+      </ul>
+    </script>
+  </head>
+  <body>
+    icon
+    <header id="header" class="clearfix">
+      <div class="ant-row">
+        <div class="ant-col-4">
+          <i class="nav-phone-icon anticon anticon-menu"></i>
+          <a id="logo" href="/">
+            <img alt="logo" src="/tpl/static/img/logo.png" />
+            <span>kakashi-ui</span>
+          </a>
+        </div>
+        <div class="nav  ant-col-xs-0 ant-col-sm-17 ant-col-md-18 ant-col-lg-20" style="display: block;">
+          <ul id="nav" class="ant-menu ant-menu-horizontal  ant-menu-light ant-menu-root">
+            <li class="ant-menu-item">
+              <a href="https://github.com/v-kakashi/kakashi-ui"><span>GitHub</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="wrapper">
+      <div id="menu" class="demos-anchor menu">
+
+      </div>
+      <div class="wrapper-content">
+        <article>
+          <section class="markdown">
+            <h1>Icon 图标控件</h1>
+            
+              <h2>说明</h2>
+<p>图标组件，目前使用 <a href="https://icomoon.io/">Material Icons</a> 的字体图标，包含四十多个常用图标。</p>
+<h2>代码演示</h2>
+<div class="highlight"><pre><code language=html><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group-header"</span>&gt;</span>默认样式<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group-body group-body-icons"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'alarms'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>alarms<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'balance'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>balance<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'box'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>box<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'add_alarm'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>add_alarm<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'add_fill'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>add_fill<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'add_circle'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>add_circle<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'adjust'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>adjust<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'apps'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>apps<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'arrow_down'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>arrow_down<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'arrow_up'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>arrow_up<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'battery_alert'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>battery_alert<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'phone'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>phone<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'cloud_down'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>cloud_down<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'edit'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>edit<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'desktop'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>desktop<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'face'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>face<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'favorite'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>favorite<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'folder'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>folder<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'folder_open'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>folder_open<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'info'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>info<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'info_outline'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>info_outline<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'lock_outline'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>lock_outline<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'mic'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>mic<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'mic_none'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>mic_none<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'mood_bad'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>mood_bad<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'add_note'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>add_note<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'pause1'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>pause1<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'pause2'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>pause2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'pause3'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>pause3<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'iphone'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>iphone<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'pin'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>pin<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'play1'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>play1<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'play2'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>play2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'power'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>power<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'list'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>list<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'zoom_in'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>zoom_in<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'zoom_out'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>zoom_out<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'zoom_map'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>zoom_map<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'warning'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>warning<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'remove'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>remove<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'error'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>error<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group-header"</span>&gt;</span>不同颜色<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group-body group-body-icons"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"red"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"box"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>red<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"blue"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"box"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>blue<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-cell"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">vk-icon</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"#2baee9"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"box"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-icon</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon-text"</span>&gt;</span>#2baee9<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre></div>
+<div class="highlight"><pre><code language=js><span class="hljs-keyword">import</span> vkIcon <span class="hljs-keyword">from</span> <span class="hljs-string">'src/icon'</span>
+<span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span>
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">'kakashi-theme/src/components/icon.less'</span>
+
+<span class="hljs-keyword">new</span> Vue({
+  el: <span class="hljs-string">"#app"</span>,
+  components: {
+    vkIcon
+  }
+})</code></pre></div>
+<h2>vkIcon</h2>
+<table><thead><tr><th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th></tr></thead>
+<tbody><tr><td>value</td>
+<td>图标的图案</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>color</td>
+<td>图标颜色</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>class</td>
+<td>图标的 className</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr></tbody></table>
+            
+        </article>
+        <div class="header">
+          <h1></h1>
+        </div>
+        
+          <div class="example">
+            <div class="phone">
+              <iframe class="example-html demo-page" frameborder="0" src="./icon-demo.html"> </iframe>
+            </div>
+          </div>
+        
+      </div>
+  </body>
+</html>

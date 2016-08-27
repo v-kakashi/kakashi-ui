@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head lang="zh-cn">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Upload 上传图片组件</title>
+    <meta name="renderer" content="webkit">
+    <link href="/tpl/static/css/normalize.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/demo.css" rel="stylesheet"/>
+    <style type="text/css">
+      
+    </style>
+  </head>
+  <body>
+    
+      <div class="example">
+        <div id="app">
+  <div class="group">
+    <header class="group-header">默认样式</header>
+    <vk-field label="图片上传">
+      <vk-upload :items.sync="items" @upload-remove-item="removeImage" @upload-add-item="addImage" :max="9"></vk-upload>
+    </vk-field>
+  </div>
+</div>
+      </div>
+    
+    
+      <script src="../common.js"></script>
+    
+      <script src="upload.js"></script>
+    
+  </body>
+</html>

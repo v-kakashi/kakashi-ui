@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Toast 提示框</title>
+    <link href="/tpl/static/css/normalize.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/anticon.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/markdown.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/main.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/hl.css" rel="stylesheet"/>
+    <style type="text/css">
+      
+    </style>
+    <script>
+    var relativePath = "";
+    </script>
+    <script src="/tpl/static/js/jquery-3.1.0.min.js" charset="UTF-8"></script>
+    <script src="/tpl/static/js/handlebars-v4.0.5.js" charset="UTF-8"></script>
+    <script src="/tpl/static/js/element.js" charset="UTF-8"></script>
+    <script id="menu-template" type="text/x-handlebars-template">
+      <ul class="ant-menu ant-menu-inline aside-container ant-menu-light ant-menu-root" >
+        {{#each menu}}
+          <li class="ant-menu-submenu-inline ant-menu-submenu-open ant-menu-submenu">
+            <div class="ant-menu-submenu-title">
+              <h4>{{category}}</h4>
+            </div>
+            <ul class="ant-menu ant-menu-inline ant-menu-sub">
+              {{#each items}}
+                {{#if isSelf}}
+                <li class="ant-menu-item ant-menu-item-selected">
+                  <a href="{{url}}"><span>{{title}}</span></a>
+                </li>
+                {{else if isNode}}
+                <div class="ant-menu-item-group-title">{{title}}</div>
+                {{else}}
+                <li class="ant-menu-item ">
+                  <a href="{{url}}"><span>{{title}}</span></a>
+                </li>
+                {{/if}}
+                {{#if children}}
+                  <ul class="ant-menu-item-group-list">
+                  {{#each children}}
+                    {{#if isSelf}}
+                    <li class="ant-menu-item ant-menu-item-selected" style="padding-left: 48px;">
+                    {{else}}
+                    <li class="ant-menu-item" style="padding-left: 48px;">
+                    {{/if}}
+                      <a href="{{url}}"><span>{{title}}</span></a>
+                    </li>
+                  {{/each}}
+                  </ul>
+                {{/if}}
+              {{/each}}
+            </ul>
+          </li>
+        {{/each}}
+      </ul>
+    </script>
+  </head>
+  <body>
+    toast
+    <header id="header" class="clearfix">
+      <div class="ant-row">
+        <div class="ant-col-4">
+          <i class="nav-phone-icon anticon anticon-menu"></i>
+          <a id="logo" href="/">
+            <img alt="logo" src="/tpl/static/img/logo.png" />
+            <span>kakashi-ui</span>
+          </a>
+        </div>
+        <div class="nav  ant-col-xs-0 ant-col-sm-17 ant-col-md-18 ant-col-lg-20" style="display: block;">
+          <ul id="nav" class="ant-menu ant-menu-horizontal  ant-menu-light ant-menu-root">
+            <li class="ant-menu-item">
+              <a href="https://github.com/v-kakashi/kakashi-ui"><span>GitHub</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="wrapper">
+      <div id="menu" class="demos-anchor menu">
+
+      </div>
+      <div class="wrapper-content">
+        <article>
+          <section class="markdown">
+            <h1>Toast 提示框</h1>
+            
+              <h2>代码演示</h2>
+<div class="highlight"><pre><code language=html><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"showToast"</span>&gt;</span>弹出 Toast<span class="hljs-tag">&lt;/<span class="hljs-name">vk-button</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"primary"</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"showIconToast"</span>&gt;</span>带有 Icon 的 Toast<span class="hljs-tag">&lt;/<span class="hljs-name">vk-button</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre></div>
+<div class="highlight"><pre><code language=js><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span>
+<span class="hljs-keyword">import</span> vkButton <span class="hljs-keyword">from</span> <span class="hljs-string">'src/Button'</span>
+<span class="hljs-keyword">import</span> toast <span class="hljs-keyword">from</span> <span class="hljs-string">'../src/toast/index'</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">'kakashi-theme/src/components/toast.less'</span>
+
+
+<span class="hljs-keyword">new</span> Vue({
+  el: <span class="hljs-string">"#app"</span>,
+  methods: {
+    showToast() {
+      toast(<span class="hljs-string">'提示信息'</span>)
+    },
+    showIconToast() {
+      toast({
+        message: <span class="hljs-string">'提示信息'</span>,
+        position: <span class="hljs-string">'bottom'</span>,
+        duration: <span class="hljs-number">1115000</span>,
+        icon: <span class="hljs-string">'info'</span>
+      })
+    },
+  },
+  components: {
+    vkButton
+  }
+})</code></pre></div>
+<h2>Props</h2>
+<table><thead><tr><th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th></tr></thead>
+<tbody><tr><td>message</td>
+<td>文本内容</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>position</td>
+<td>Toast 的位置(&#39;top&#39;,&#39;bottom&#39;,&#39;middle&#39;)</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>duration</td>
+<td>持续时间（毫秒）</td>
+<td>Number</td>
+<td>3000</td></tr>
+<tr><td>icon</td>
+<td>图标 由 <a href="./icon.html">vkIcon</a> 组件提供显示</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>cls</td>
+<td>Toast 的类名。可以为其添加样式</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr></tbody></table>
+            
+        </article>
+        <div class="header">
+          <h1></h1>
+        </div>
+        
+          <div class="example">
+            <div class="phone">
+              <iframe class="example-html demo-page" frameborder="0" src="./toast-demo.html"> </iframe>
+            </div>
+          </div>
+        
+      </div>
+  </body>
+</html>

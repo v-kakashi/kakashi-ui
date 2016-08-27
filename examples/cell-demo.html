@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head lang="zh-cn">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Cell 单元格控件</title>
+    <meta name="renderer" content="webkit">
+    <link href="/tpl/static/css/normalize.css" rel="stylesheet"/>
+    <link href="/tpl/static/css/demo.css" rel="stylesheet"/>
+    <style type="text/css">
+      
+    </style>
+  </head>
+  <body>
+    
+      <div class="example">
+        <div id="app">
+  <div class="group">
+    <header class="group-header">列表样式</header>
+    <vk-cell title="新闻标题1" label="企业传播处" ext="2016-06-16 11:27"></vk-cell>
+    <vk-cell title="新闻标题2" label="企业传播处" ext="2016-06-16 11:27"></vk-cell>
+    <vk-cell title="不能点击" :is-link="false" label="企业传播处" ext="2016-06-16 11:27"></vk-cell>
+    <vk-cell title="超长新闻标题超长新闻标题超长新闻标题超长新闻标题超长新闻标题超长新闻标题超长新闻标题1" label="企业传播处" ext="2016-06-16 11:27"></vk-cell>
+  </div>
+  <div class="group">
+    <header class="group-header">单元格样式</header>
+    <vk-cell v-bind="a" value="福建省" is-link after="nav_next"></vk-cell>
+    <vk-cell title="自定义图标1" is-link>
+      <template slot="after">
+        <img src="/static/img/logo.png" style="width: 20px;" />
+      </template>
+    </vk-cell>
+    <vk-cell icon="apps" title="带图标样式"></vk-cell>
+    <vk-cell title="自定义图标2">
+      <template slot="icon">
+        <img src="/static/img/logo.png" style="width: 20px; margin-right:4px;" />
+      </template>
+    </vk-cell>
+  </div>
+  <div class="group">
+    <header class="group-header">自定义内容</header>
+    <vk-cell>
+      <div slot>
+        <h4 style="margin-bottom:4px;">自定义标题</h4>
+        <div>自定义内容</div>
+      </div>     
+    </vk-cell>
+  </div>
+</div>
+      </div>
+    
+    
+      <script src="../common.js"></script>
+    
+      <script src="cell.js"></script>
+    
+  </body>
+</html>
