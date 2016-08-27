@@ -31,7 +31,7 @@ new Vue({
       toast({
         message: '提示信息',
         position: 'bottom',
-        duration: 5000,
+        duration: 1115000,
         icon: 'info'
       })
     },

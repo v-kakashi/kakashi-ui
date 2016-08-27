@@ -1,6 +1,6 @@
 <template>
-  <div class="vk-toast {{ customClass }}" transition="vk-toast" :style="{ 'padding': icon === '' ? '10px' : '20px' }">
-    <vk-icon class="vk-toast-icon" v-if="icon !== ''">{{icon}}</vk-icon>
+  <div class="vk-toast {{ customClass }}" transition="vk-toast">
+    <vk-icon class="vk-toast-icon" v-if="icon !== ''" :value='icon'></vk-icon>
     <span class="vk-toast-text" :style="{ 'padding-top': icon === '' ? '0' : '10px' }">{{ message }}</span>
   </div>
 </template>

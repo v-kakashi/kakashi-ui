@@ -35,8 +35,9 @@ new Vue({
           for(var i =0 ; i < 10 ; ++i) {
             node.dataSoures.push({ title: `A${i}`, children: []})
           }        
-        }, 90000)
+        }, 1000)
       }
+      console.log(nodenode)
     }
   },
   components: {

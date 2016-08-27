@@ -1,10 +1,10 @@
 <template>
   <li class="vk-tree-node-warp">
-    <div class="vk-tree-node" @click="handleExpand">
+    <div class="vk-tree-node">
       <vk-node-check :state="state" v-show='disableCheckbox' @click="handleSelect"></vk-node-check>
       <div :style="{'width': (deep - 1) * 22 + 'px'}" @click="handleSelect"></div>
       <vk-node-switcher v-if="isSync === false || !!children.length" :is-loading="syncState === 'SYNC_ING'" :expand="expand"></vk-node-switcher>
-      <div class="vk-tree-content">
+      <div class="vk-tree-content" @click="handleExpand">
         <span class="vk-tree-title" >{{title}}</span>
         <span class="vk-tree-subtitle" >{{subTitle}}</span>
       </div>

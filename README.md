@@ -1,27 +1,17 @@
 # kakashi-ui
 
-> 一个组件库
+> 又一个组件库
 
-## Build Setup
+## 说明
 
-``` bash
-# install dependencies
-npm install
+基于 vue 的一套 ui 组件库，借 (chao) 鉴 (xi)  [mint-ui](http://mint-ui.github.io/#!/zh-cn) , [crossjs](http://crossjs.com/plato/#/) 组件。
 
-# serve with hot reload at localhost:8080
-npm run dev
+## 特点
+1. 逻辑代码与[样式](https://github.com/v-kakashi/kakashi-theme)分离
+2. 按需加载不同组件。
+3. 构建出统一风格的组件。
+4. 友好的文档说明和例子。
 
-# build for production with minification
-npm run build
+## 说明文档
 
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+[网站](https://v-kakashi.github.io/kakashi-ui/)

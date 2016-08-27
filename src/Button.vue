@@ -5,7 +5,7 @@
         'vk-button-disabled': disabled,
         'vk-button-plain': plain
       }]"
-    @touchstart="handleClick">
+      @click="handleClick">
     <span class="vk-button-icon">
       <slot name="icon">
         <vk-icon class="mintui" v-if="icon">{{icon}}</vk-icon>
@@ -47,13 +47,20 @@ export default {
           'large'
         ].indexOf(value) > -1
       }
+    },
+    click: {
+      type: Function,
+      default: () => {}
     }
   },
   methods: {
     handleClick ($event) {
       if (this.disabled) {
+        $event.stopImmediatePropagation()
         $event.stopPropagation()
         $event.preventDefault()
+      } else {
+        this.click($event)
       }
     }
   },

@@ -1,52 +1,31 @@
 ---
-category: 组件
-title: 安装
+category: 说明
+title: 使用说明
+---
 ---
 
-## 代码演示
+## 说明
 
+基于 vue 的一套 ui 组件库，借 (chao) 鉴 (xi)  [mint-ui](http://mint-ui.github.io/#!/zh-cn) , [crossjs](http://crossjs.com/plato/#/) 组件。
 
-```html
-<div id="app">
-  <vk-tree :data-soures="data" :is-async="true"  :on-expand="expand">
-  </vk-tree>
-</div>
+## 特点
+1. 逻辑代码与[样式](https://github.com/v-kakashi/kakashi-theme)分离
+2. 按需加载不同组件。
+3. 构建出统一风格的组件。
+4. 友好的文档说明和例子。
+
+## 安装
+
+```bash
+  npm install kakashi-ui
 ```
 
-```js
-import vkTreeNode from '../src/tree/TreeNode'
-import vkTree from '../src/tree/Tree'
-import vkTreeNodeIcon from '../src/tree/TreeNodeIcon'
-import Vue from 'vue'
+## 使用
 
-import 'kakashi-theme/src/components/tree.less'
-window.onerror = function (e){
-  alert(e)
-}
-new Vue({
-  el: "#app",
-  data () {
-    return {
-      data : [
-        { title: 'A' }
-      ]
-    }
-  },
-  methods: {
-    expand (node) {
-      if(node.isSync == false) {
-        setTimeout(function () {
-          for(var i =0 ; i < 100 ; ++i) {
-            node.dataSoures.push({ title: `A${i}`, children: []})
-          }        
-        }, 300)
-      }
-    }
-  },
-  components: {
-    vkTree,
-    vkTreeNode,
-    vkTreeNodeIcon
-  }
-})
+### 按需加载
 ```
+  import vkButton from 'kakashi-ui/src/Button'
+  import 'kakashi-theme/src/components/button.less'
+```
+
+### 全量加载（待开发）
