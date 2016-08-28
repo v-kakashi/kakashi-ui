@@ -17,8 +17,23 @@
   <body>
     
       <div class="example">
-        <div id="app">
-  <vk-image src="http://fanyi.baidu.com/static/translation/img/header/logo_cbfea26.png"></vk-image>
+        <style>
+.vk-image-circular img{ border-radius: 50%; }
+</style>
+
+<div id="app">
+  <div class="group">
+    <header class="group-header">默认样式</header>
+    <div class="group-body">
+      <vk-image src="http://lorempixel.com/80/80/people/"></vk-image>
+    </div>
+  </div>
+  <div class="group">
+    <header class="group-header">自定义样式</header>
+    <div class="group-body">
+      <vk-image class="vk-image-circular" src="http://lorempixel.com/80/80/people/"></vk-image>
+    </div>
+  </div>
 </div>
       </div>
     

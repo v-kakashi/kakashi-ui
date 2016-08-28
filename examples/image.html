@@ -88,14 +88,30 @@
           <section class="markdown">
             <h1>Image 图片控件</h1>
             
-              <h2>代码演示</h2>
-<div class="highlight"><pre><code language=html><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">vk-image</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://fanyi.baidu.com/static/translation/img/header/logo_cbfea26.png"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-image</span>&gt;</span>
+              <hr></hr>
+<h2>代码演示</h2>
+<div class="highlight"><pre><code language=html><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+<span class="hljs-selector-class">.vk-image-circular</span> <span class="hljs-selector-tag">img</span>{ <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>; }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group-header"</span>&gt;</span>默认样式<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group-body"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">vk-image</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://lorempixel.com/80/80/people/"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-image</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group-header"</span>&gt;</span>自定义样式<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group-body"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">vk-image</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vk-image-circular"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://lorempixel.com/80/80/people/"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-image</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre></div>
 <div class="highlight"><pre><code language=js><span class="hljs-keyword">import</span> vkImage <span class="hljs-keyword">from</span> <span class="hljs-string">'../src/Image'</span>
 <span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span>
 
-<span class="hljs-keyword">import</span> <span class="hljs-string">'kakashi-theme/src/components/image.less'</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">'kakashi-theme'</span>
 
 <span class="hljs-keyword">new</span> Vue({
   el: <span class="hljs-string">"#app"</span>,
@@ -103,6 +119,39 @@
     vkImage
   }
 })</code></pre></div>
+<h2>属性</h2>
+<table><thead><tr><th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th></tr></thead>
+<tbody><tr><td>class</td>
+<td>图标 className</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>src</td>
+<td>图片路径</td>
+<td>String</td>
+<td>1 像素图片</td></tr>
+<tr><td>alt</td>
+<td><code>img</code> 标签的 alt 属性</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>title</td>
+<td><code>img</code> 标签的 title 属性</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>width</td>
+<td>图片的宽度</td>
+<td>String, Number</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>height</td>
+<td>图片的高度</td>
+<td>String, Number</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>keepRatio</td>
+<td>保持图片的缩放比例</td>
+<td>Boolean</td>
+<td>true</td></tr></tbody></table>
             
         </article>
         <div class="header">

@@ -27,6 +27,9 @@ body{background: #fafafa;}
   -ms-user-select:initial;/*IE10*/
   -khtml-user-select:initial;/*早期浏览器*/
   user-select:initial;
+  display: block;
+  color: #333;
+  margin-top: 5px;
 }
 
 .example .vk-icon{color: #000;}

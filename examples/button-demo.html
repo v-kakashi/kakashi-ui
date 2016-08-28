@@ -47,7 +47,7 @@
     <header class="group-header">按钮状态</header>
     <div class="group-body">
       <vk-button plain>幽灵按钮</vk-button>
-      <vk-button disabled>禁用</vk-button>
+      <vk-button disabled :click="touch">禁用</vk-button>
     </div>
   </div>
   <div class="group">
@@ -61,7 +61,7 @@
   <div class="group">
     <header class="group-header">事件</header>
     <div class="group-body">
-      <vk-button :on-touch="touch">单击事件</vk-button>
+      <vk-button :click="touch">单击事件</vk-button>
     </div>
   </div>
 </div>
