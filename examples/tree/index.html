@@ -88,7 +88,8 @@
           <section class="markdown">
             <h1>Tree 树形控件</h1>
             
-              <h2>何时使用</h2>
+              <hr></hr>
+<h2>何时使用</h2>
 <p>文件夹、组织架构、生物分类、国家地区等等，世间万物的大多数结构都是树形结构。使用<code>树控件</code>可以完整展现其中的层级关系，并具有展开收起选择等交互功能。</p>
 <h2>代码演示</h2>
 <div class="highlight"><pre><code language=html><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
@@ -126,13 +127,13 @@
     vkTree
   }
 })</code></pre></div>
-<h2>vkTree</h2>
+<h3>属性 (Tree)</h3>
 <table><thead><tr><th>参数</th>
 <th>说明</th>
 <th>类型</th>
 <th>默认值</th></tr></thead>
 <tbody><tr><td>selectKeys</td>
-<td>选中选项</td>
+<td>选中节点，取每个节点的 key 值</td>
 <td>Array</td>
 <td>null</td></tr>
 <tr><td>extra</td>
@@ -142,37 +143,121 @@
 <tr><td>dataSoures</td>
 <td>数据源</td>
 <td>Array</td>
+<td>[]</td></tr>
+<tr><td>disableCheckbox</td>
+<td>禁用 CheckBox (后期把默值改成 <code>true</code> )</td>
+<td>Boolean</td>
+<td>false</td></tr>
+<tr><td>isSync</td>
+<td>是否为同步数据</td>
+<td>Boolean</td>
+<td>true</td></tr>
+<tr><td>onSelect</td>
+<td>选中节点事件，入参为 选中的节点</td>
+<td>Function</td>
+<td>-</td></tr>
+<tr><td>onExpand</td>
+<td>展开节点事件，入参为 展开中的节点</td>
+<td>Function</td>
+<td>-</td></tr></tbody></table>
+<hr></hr>
+<h3>属性 (TreeNode)</h3>
+<table><thead><tr><th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th></tr></thead>
+<tbody><tr><td>title</td>
+<td>节点标题</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>subTitle</td>
+<td>节点副标题</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>disabled</td>
+<td>禁用该节点</td>
+<td>Boolean</td>
+<td>false</td></tr>
+<tr><td>disableCheckbox</td>
+<td>禁用该节点 CheckBox</td>
+<td>Boolean</td>
+<td>false</td></tr>
+<tr><td>isLeaf</td>
+<td>是否为叶子节点，如果不是叶子节点，就会显示可以展开按钮</td>
+<td>Boolean</td>
+<td>true</td></tr>
+<tr><td>syncState</td>
+<td>该节点的同步状态 <br /> <code>SYNC_ING</code> <br /> <code>NOT_SYNC</code> <br /> <code>COMPLETE_SYNC</code></td>
+<td>String</td>
+<td><code>COMPLETE_SYNC</code></td></tr>
+<tr><td>key</td>
+<td>设置该节点的唯一 key 值，Tree 的 selectKeys 属性控制该节点是没否选中</td>
+<td>String, Number</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>dataSoures</td>
+<td>设置孩子节点的数据</td>
+<td>Array</td>
 <td>[]</td></tr></tbody></table>
-<p>:select-keys=&quot;[&#39;a1&#39;,&#39;a3&#39;,&#39;b3&#39;]&quot;</p>
-<h2>事件</h2>
+<h3>事件 (TreeNode)</h3>
 <table><thead><tr><th>参数</th>
 <th>说明</th>
 <th>入参</th></tr></thead>
-<tbody><tr><td>onSelect</td>
+<tbody><tr><td>select</td>
 <td>选中节点事件</td>
+<td>选中的节点数据</td></tr>
+<tr><td>expand</td>
+<td>展开节点事件</td>
 <td>选中的节点数据</td></tr></tbody></table>
 <hr></hr>
-<h2>vkTreeNode</h2>
+<h3>属性 (TreeNodeIcon)</h3>
 <table><thead><tr><th>参数</th>
 <th>说明</th>
 <th>类型</th>
 <th>默认值</th></tr></thead>
-<tbody><tr><td>selectKeys</td>
-<td>选中选项</td>
-<td>Array</td>
-<td>null</td></tr>
-<tr><td>extra</td>
-<td>扩展字段</td>
-<td>Object</td>
-<td>null</td></tr>
-<tr><td>dataSoures</td>
-<td>数据源</td>
-<td>Array</td>
-<td>[]</td></tr></tbody></table>
+<tbody><tr><td>title</td>
+<td>节点标题</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>subTitle</td>
+<td>节点副标题</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>width</td>
+<td>图片宽度，单位为像素</td>
+<td>Number</td>
+<td>40</td></tr>
+<tr><td>height</td>
+<td>图片高度，单位为像素</td>
+<td>Number</td>
+<td>40</td></tr>
+<tr><td>src</td>
+<td>图片路径</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>key</td>
+<td>设置该节点的唯一 key 值，Tree 的 selectKeys 属性控制该节点是没否选中</td>
+<td>String, Number</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>disabled</td>
+<td>禁用该节点</td>
+<td>Boolean</td>
+<td>false</td></tr>
+<tr><td>disableCheckbox</td>
+<td>禁用该节点 CheckBox</td>
+<td>Boolean</td>
+<td>false</td></tr></tbody></table>
+<h3>事件 (TreeNodeIcon)</h3>
+<table><thead><tr><th>参数</th>
+<th>说明</th>
+<th>入参</th></tr></thead>
+<tbody><tr><td>select</td>
+<td>选中节点事件</td>
+<td>选中的节点数据</td></tr>
+<tr><td>expand</td>
+<td>展开节点事件</td>
+<td>选中的节点数据</td></tr></tbody></table>
 <hr></hr>
-<h2>vkTreeNodeIcon</h2>
-<hr></hr>
-<h2>vkNodeCheck</h2>
+<h3>属性 (NodeCheck)</h3>
 <table><thead><tr><th>参数</th>
 <th>说明</th>
 <th>类型</th>
