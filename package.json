@@ -1,6 +1,6 @@
 {
   "name": "kakashi-ui",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "基于 vue 的一套 ui 组件库",
   "author": "limingmin <314407103@qq.com>",
   "main": "./src/kakashi-ui.vue",
@@ -9,6 +9,7 @@
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
     "doc": "kakashi-doc doc",
+    "init": "kakashi-doc install",
     "dist": "kakashi-doc doc --build --publicPath /kakashi-ui",
     "unit": "karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
@@ -16,7 +17,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-    "kakashi-theme": "^1.0.19",
+    "kakashi-theme": "^1.0.20",
     "mint-spinner": "^0.2.2",
     "vue": "^1.0.26",
     "vue-clickoutside": "^0.1.0",
@@ -53,7 +54,7 @@
     "jasmine": "^2.4.1",
     "jasmine-core": "^2.4.1",
     "json-loader": "^0.5.4",
-    "kakashi-doc": "^1.1.12",
+    "kakashi-doc": "^1.1.13",
     "karma": "^0.13.15",
     "karma-coverage": "^0.5.5",
     "karma-jasmine": "^1.0.2",

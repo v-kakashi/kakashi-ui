@@ -39,7 +39,7 @@ import mixData from '../mix/data'
 const SYNC_ING = 'SYNC_ING'
 const NOT_SYNC = 'NOT_SYNC'
 const COMPLETE_SYNC = 'COMPLETE_SYNC'
-console.log(mixData)
+
 export default {
   mixins: [mixData],
   name: 'vkTreeNode',

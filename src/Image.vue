@@ -13,9 +13,6 @@
 
 <script>
 export default {
-  ready () {
-    console.log(this.src)
-  },
   props: {
     class: {
       type: String,

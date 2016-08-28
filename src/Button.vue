@@ -8,7 +8,7 @@
       @click="handleClick">
     <span class="vk-button-icon">
       <slot name="icon">
-        <vk-icon class="mintui" v-if="icon">{{icon}}</vk-icon>
+        <vk-icon class="mintui" v-if="icon" :value="icon"></vk-icon>
       </slot>
     </span>
     <label class="vk-button-text"><slot></slot></label>

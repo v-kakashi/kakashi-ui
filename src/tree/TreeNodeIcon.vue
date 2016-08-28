@@ -31,7 +31,7 @@ export default {
     height: Number,
     subTitle: String,
     title: String,
-    state: {
+    state: { // 可以在 data 里定义
       type: Number,
       default: 0
     },

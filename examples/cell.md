@@ -2,6 +2,7 @@
 category: 组件
 title: Cell 单元格控件
 ---
+---
 
 ## 说明
 
@@ -23,13 +24,13 @@ title: Cell 单元格控件
     <vk-cell v-bind="a" value="福建省" is-link after="nav_next"></vk-cell>
     <vk-cell title="自定义图标1" is-link>
       <template slot="after">
-        <img src="/static/img/logo.png" style="width: 20px;" />
+        <img src="http://lorempixel.com/20/20/abstract/" style="width: 20px;" />
       </template>
     </vk-cell>
     <vk-cell icon="apps" title="带图标样式"></vk-cell>
     <vk-cell title="自定义图标2">
       <template slot="icon">
-        <img src="/static/img/logo.png" style="width: 20px; margin-right:4px;" />
+        <img src="http://lorempixel.com/20/20/abstract/" style="width: 20px; margin-right:4px;" />
       </template>
     </vk-cell>
   </div>
@@ -65,7 +66,7 @@ new Vue({
 })
 ```
 
-## Props
+## 属性
 
 | 参数      | 说明                                     | 类型       | 默认值 |
 |-----------|------------------------------------------|------------|-------|
@@ -76,7 +77,6 @@ new Vue({
 | value | 右侧显示文字| String | '' |
 | ext   | 扩展信息，在右下角显示 | String | '' |
 | is-link | 可点击的链接| Boolean | true |
-
 
 
 ## Slot

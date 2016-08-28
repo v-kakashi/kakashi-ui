@@ -2,6 +2,7 @@
 category: 组件
 title: Button 按钮控件
 ---
+---
 
 ## 说明
 
@@ -21,7 +22,7 @@ title: Button 按钮控件
     </div>
   </div>
   <div class="group">
-    <header class="group-header">幽灵样式</header>
+    <header class="group-header">缕空样式</header>
     <div class="group-body">
       <vk-button type="default" plain>default</vk-button>
       <vk-button type="primary" plain>primary</vk-button>
@@ -39,8 +40,8 @@ title: Button 按钮控件
   <div class="group">
     <header class="group-header">按钮状态</header>
     <div class="group-body">
-      <vk-button plain>幽灵按钮</vk-button>
-      <vk-button disabled>禁用</vk-button>
+      <vk-button plain>缕空按钮</vk-button>
+      <vk-button disabled :click="touch">禁用</vk-button>
     </div>
   </div>
   <div class="group">
@@ -54,7 +55,7 @@ title: Button 按钮控件
   <div class="group">
     <header class="group-header">事件</header>
     <div class="group-body">
-      <vk-button :on-touch="touch">单击事件</vk-button>
+      <vk-button :click="touch">单击事件</vk-button>
     </div>
   </div>
 </div>
@@ -64,7 +65,7 @@ title: Button 按钮控件
 ```js
 import vkButton from 'src/Button'
 import Vue from 'vue'
-import 'kakashi-theme/src/components/button.less'
+import 'kakashi-theme'
 
 new Vue({
   el: "#app",
@@ -79,19 +80,18 @@ new Vue({
 })
 ```
 
-## Props
+## 属性
 
 | 参数      | 说明                                     | 类型       | 默认值 |
 |-----------|------------------------------------------|------------|-------|
 | icon | 按钮的图标由 [vkIcon](../icon.html) 组件提供显示 | String  | '' |
-| disabled | 是否禁用图标 | Boolean  | false |
-| plain | 是否设置成幽灵按钮 | Boolean | false |
+| disabled | 是否禁用图标，为禁用时，不能阻止 @click 绑定的事件，只能阻止通过 :click 绑定的事件 | Boolean  | false |
+| plain | 是否设置成缕空按钮 | Boolean | false |
 | type	 | 按钮类型，只接受	default , danger , primary | String | 'default' |
 | size | 安钮大小，只接受	small , normal , large  | String | 'normal' |
 
----
 
 ## 事件
 | 参数      | 说明                                     | 入参       |
 |-----------|-----------------------------------------|------------|
-| onTouch | 点击 button 按钮 （只在手机模式下生效） | $event |
+| click | 点击 button 按钮 | $event |
