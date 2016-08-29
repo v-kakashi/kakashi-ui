@@ -89,7 +89,7 @@
             
               <hr></hr>
 <h2>说明</h2>
-<p>上传图片组件</p>
+<p>上传图片组件，这个要基于手机的原生功能，在 pc 不能完成上传功能。</p>
 <h2>代码演示</h2>
 <div class="highlight"><pre><code language=html><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group"</span>&gt;</span>
@@ -132,24 +132,41 @@
     vkField
   }
 })</code></pre></div>
-<h2>Props</h2>
+<h2>属性</h2>
 <table><thead><tr><th>参数</th>
 <th>说明</th>
 <th>类型</th>
 <th>默认值</th></tr></thead>
-<tbody><tr><td>value</td>
-<td>图标的图案</td>
+<tbody><tr><td>items</td>
+<td>上传图片路径</td>
+<td>Array</td>
+<td>[]</td></tr>
+<tr><td>width</td>
+<td>图片显示高度</td>
+<td>String, Number</td>
+<td>82px</td></tr>
+<tr><td>height</td>
+<td>图片显示高度</td>
+<td>String, Number</td>
+<td>82px</td></tr>
+<tr><td>max</td>
+<td>最多上传图版的数量</td>
+<td>Number</td>
+<td>9</td></tr>
+<tr><td>buttonImage</td>
+<td>上传按钮图片路径</td>
 <td>String</td>
-<td>&#39;&#39;</td></tr>
-<tr><td>color</td>
-<td>图标颜色</td>
-<td>String</td>
-<td>&#39;&#39;</td></tr>
-<tr><td>class</td>
-<td>图标的 className</td>
-<td>String</td>
-<td>&#39;&#39;</td></tr></tbody></table>
-<h2>Slot</h2>
+<td>很长的一串 base64 值</td></tr></tbody></table>
+<h2>事件</h2>
+<table><thead><tr><th>事件名</th>
+<th>说明</th>
+<th>入参</th></tr></thead>
+<tbody><tr><td>upload-add-item</td>
+<td>增加一个元素时触发</td>
+<td>加入该的元素信息</td></tr>
+<tr><td>upload-remove-item</td>
+<td>移除一个元素触发</td>
+<td>移除该的元素信息</td></tr></tbody></table>
             
         </article>
         <div class="header">
