@@ -18,8 +18,13 @@
     
       <div class="example">
         <div id="app">
-  <vk-button :on-touch="open" >打开对话框</vk-button>
-  <vk-msgbox title="系统提示" :visible.sync="isVisible" :on-action="action" :show-cancel-button="true" message="你好，程序员!" ></vk-msgbox>
+  <div class="group">
+    <header class="group-header">默认样式</header>
+    <div class="group-body">
+      <vk-button :click="open" >打开对话框</vk-button>
+      <vk-msgbox title="系统提示" :visible.sync="isVisible" :on-action="action" :show-cancel-button="true" message="你好，程序员!" ></vk-msgbox>
+    </div>
+  </div>
 </div>
       </div>
     

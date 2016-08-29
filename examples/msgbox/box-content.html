@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Msgbox 对话框组件</title>
+    <title>Msgbox 自定义内容</title>
     <link href="../../../kakashi-ui/tpl/static/css/normalize.css" rel="stylesheet"/>
     <link href="../../../kakashi-ui/tpl/static/css/anticon.css" rel="stylesheet"/>
     <link href="../../../kakashi-ui/tpl/static/css/markdown.css" rel="stylesheet"/>
@@ -85,93 +85,54 @@
       <div class="wrapper-content">
         <article>
           <section class="markdown">
-            <h1>Msgbox 对话框组件</h1>
+            <h1>Msgbox 自定义内容</h1>
             
-              <h2>何时使用</h2>
-<p>弹出式提示框，有多种交互形式。</p>
+              <hr></hr>
 <h2>代码演示</h2>
 <div class="highlight"><pre><code language=html><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">vk-msgbox</span> <span class="hljs-attr">message</span>=<span class="hljs-string">"你好，程序员!"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vk-msgbox-content"</span> <span class="hljs-attr">slot</span>=<span class="hljs-string">"content"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">vk-image</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://fanyi.baidu.com/static/translation/img/header/logo_cbfea26.png"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-image</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group-header"</span>&gt;</span>自定义内容<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group-body"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">vk-button</span> <span class="hljs-attr">:click</span>=<span class="hljs-string">"open"</span> &gt;</span>打开对话框<span class="hljs-tag">&lt;/<span class="hljs-name">vk-button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">vk-msgbox</span> <span class="hljs-attr">message</span>=<span class="hljs-string">"你好，程序员!"</span> <span class="hljs-attr">:visible.sync</span>=<span class="hljs-string">"isVisible"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vk-msgbox-content"</span> <span class="hljs-attr">slot</span>=<span class="hljs-string">"content"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">vk-image</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://fanyi.baidu.com/static/translation/img/header/logo_cbfea26.png"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-image</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">vk-msgbox</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">vk-msgbox</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre></div>
 <div class="highlight"><pre><code language=js><span class="hljs-keyword">import</span> vkMsgbox <span class="hljs-keyword">from</span> <span class="hljs-string">'../../src/msgbox'</span>
 <span class="hljs-keyword">import</span> vkImage <span class="hljs-keyword">from</span> <span class="hljs-string">'../../src/image'</span>
+<span class="hljs-keyword">import</span> vkButton <span class="hljs-keyword">from</span> <span class="hljs-string">'../../src/button'</span>
 <span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span>
 
 <span class="hljs-keyword">import</span> <span class="hljs-string">'kakashi-theme/src/components/image.less'</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">'kakashi-theme/src/components/button.less'</span>
 <span class="hljs-keyword">import</span> <span class="hljs-string">'kakashi-theme/src/components/msgbox.less'</span>
 
 <span class="hljs-keyword">new</span> Vue({
   el: <span class="hljs-string">"#app"</span>,
+  data () {
+    <span class="hljs-keyword">return</span> {
+      isVisible : <span class="hljs-literal">false</span>
+    }
+  },
+  methods: {
+    open ($event) {
+      <span class="hljs-keyword">this</span>.isVisible = <span class="hljs-literal">true</span>
+    },
+    action (type) {
+      alert(<span class="hljs-string">`button 类型: <span class="hljs-subst">${type}</span>`</span>)
+    }
+  },
   components: {
     vkMsgbox,
+    vkButton,
     vkImage
   }
 })</code></pre></div>
-<h2>vkMsgbox</h2>
-<table><thead><tr><th>参数</th>
-<th>说明</th>
-<th>类型</th>
-<th>默认值</th></tr></thead>
-<tbody><tr><td>title</td>
-<td>提示框的标题</td>
-<td>String</td>
-<td>&#39;标题&#39;</td></tr>
-<tr><td>message</td>
-<td>提示框的内容</td>
-<td>String</td>
-<td>&#39;&#39;</td></tr>
-<tr><td>showConfirmButton</td>
-<td>是否显示确认按钮</td>
-<td>Boolean</td>
-<td>true</td></tr>
-<tr><td>showCancelButton</td>
-<td>是否显示取消按钮</td>
-<td>Boolean</td>
-<td>false</td></tr>
-<tr><td>confirmButtonText</td>
-<td>确认按钮的文本</td>
-<td>String</td>
-<td>&#39;&#39;</td></tr>
-<tr><td>confirmButtonHighlight</td>
-<td>是否将确认按钮的文本加粗显示</td>
-<td>Boolean</td>
-<td>false</td></tr>
-<tr><td>confirmButtonClass</td>
-<td>确认按钮的类名</td>
-<td>String</td>
-<td>&#39;&#39;</td></tr>
-<tr><td>cancelButtonText</td>
-<td>取消按钮的文本</td>
-<td>String</td>
-<td>&#39;&#39;</td></tr>
-<tr><td>confirmButtonHighlight</td>
-<td>是否将确认按钮的文本加粗显示</td>
-<td>Boolean</td>
-<td>false</td></tr>
-<tr><td>cancelButtonHighlight</td>
-<td>是否将取消按钮的文本加粗显示</td>
-<td>Boolean</td>
-<td>false</td></tr>
-<tr><td>cancelButtonClass</td>
-<td>取消按钮的类名</td>
-<td>String</td>
-<td>&#39;&#39;</td></tr>
-<tr><td>showInput</td>
-<td>是否显示一个输入框</td>
-<td>Boolean</td>
-<td>false</td></tr>
-<tr><td>inputValue</td>
-<td>输入框的值</td>
-<td>String</td>
-<td>&#39;&#39;</td></tr>
-<tr><td>inputPlaceholder</td>
-<td>输入框的占位符</td>
-<td>String</td>
-<td>&#39;&#39;</td></tr></tbody></table>
             
         </article>
         <div class="header">

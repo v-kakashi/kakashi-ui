@@ -87,12 +87,18 @@
           <section class="markdown">
             <h1>Msgbox 对话框组件</h1>
             
-              <h2>何时使用</h2>
+              <hr></hr>
+<h2>何时使用</h2>
 <p>弹出式提示框，有多种交互形式。</p>
 <h2>代码演示</h2>
 <div class="highlight"><pre><code language=html><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">vk-button</span> <span class="hljs-attr">:on-touch</span>=<span class="hljs-string">"open"</span> &gt;</span>打开对话框<span class="hljs-tag">&lt;/<span class="hljs-name">vk-button</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">vk-msgbox</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"系统提示"</span> <span class="hljs-attr">:visible.sync</span>=<span class="hljs-string">"isVisible"</span> <span class="hljs-attr">:on-action</span>=<span class="hljs-string">"action"</span> <span class="hljs-attr">:show-cancel-button</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">message</span>=<span class="hljs-string">"你好，程序员!"</span> &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-msgbox</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group-header"</span>&gt;</span>默认样式<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"group-body"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">vk-button</span> <span class="hljs-attr">:click</span>=<span class="hljs-string">"open"</span> &gt;</span>打开对话框<span class="hljs-tag">&lt;/<span class="hljs-name">vk-button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">vk-msgbox</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"系统提示"</span> <span class="hljs-attr">:visible.sync</span>=<span class="hljs-string">"isVisible"</span> <span class="hljs-attr">:on-action</span>=<span class="hljs-string">"action"</span> <span class="hljs-attr">:show-cancel-button</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">message</span>=<span class="hljs-string">"你好，程序员!"</span> &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-msgbox</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre></div>
 <div class="highlight"><pre><code language=js><span class="hljs-keyword">import</span> vkMsgbox <span class="hljs-keyword">from</span> <span class="hljs-string">'../../src/msgbox'</span>
 <span class="hljs-keyword">import</span> vkButton <span class="hljs-keyword">from</span> <span class="hljs-string">'../../src/button'</span>
@@ -106,7 +112,7 @@
   el: <span class="hljs-string">"#app"</span>,
   data () {
     <span class="hljs-keyword">return</span> {
-      isVisible : <span class="hljs-literal">true</span>
+      isVisible : <span class="hljs-literal">false</span>
     }
   },
   methods: {

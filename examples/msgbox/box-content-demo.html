@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Msgbox 对话框组件</title>
+    <title>Msgbox 自定义内容</title>
     <meta name="renderer" content="webkit">
     <link href="../../../kakashi-ui/tpl/static/css/normalize.css" rel="stylesheet"/>
     <link href="../../../kakashi-ui/tpl/static/css/demo.css" rel="stylesheet"/>
@@ -18,11 +18,18 @@
     
       <div class="example">
         <div id="app">
-  <vk-msgbox message="你好，程序员!">
-    <div class="vk-msgbox-content" slot="content">
-      <vk-image src="http://fanyi.baidu.com/static/translation/img/header/logo_cbfea26.png"></vk-image>
+
+  <div class="group">
+    <header class="group-header">自定义内容</header>
+    <div class="group-body">
+      <vk-button :click="open" >打开对话框</vk-button>
+      <vk-msgbox message="你好，程序员!" :visible.sync="isVisible">
+        <div class="vk-msgbox-content" slot="content">
+          <vk-image src="http://fanyi.baidu.com/static/translation/img/header/logo_cbfea26.png"></vk-image>
+        </div>
+      </vk-msgbox>
     </div>
-  </vk-msgbox>
+  </div>
 </div>
       </div>
     
