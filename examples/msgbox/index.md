@@ -2,6 +2,7 @@
 category: 组件
 title: Msgbox 对话框组件
 ---
+---
 
 ## 何时使用
 
@@ -11,8 +12,13 @@ title: Msgbox 对话框组件
 
 ```html
 <div id="app">
-  <vk-button :on-touch="open" >打开对话框</vk-button>
-  <vk-msgbox title="系统提示" :visible.sync="isVisible" :on-action="action" :show-cancel-button="true" message="你好，程序员!" ></vk-msgbox>
+  <div class="group">
+    <header class="group-header">默认样式</header>
+    <div class="group-body">
+      <vk-button :click="open" >打开对话框</vk-button>
+      <vk-msgbox title="系统提示" :visible.sync="isVisible" :on-action="action" :show-cancel-button="true" message="你好，程序员!" ></vk-msgbox>
+    </div>
+  </div>
 </div>
 ```
 
@@ -29,7 +35,7 @@ new Vue({
   el: "#app",
   data () {
     return {
-      isVisible : true
+      isVisible : false
     }
   },
   methods: {
@@ -75,7 +81,7 @@ new Vue({
 ---
 
 ## 事件
-| 参数      | 说明                                     | 入参       |
+| 事件名      | 说明                                     | 入参       |
 |-----------|-----------------------------------------|------------|
 | onAction | 点击对话框按钮回调 | actionType: confirm , cancel |
 

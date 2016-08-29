@@ -89,9 +89,4 @@ new Vue({
 | plain | 是否设置成缕空按钮 | Boolean | false |
 | type	 | 按钮类型，只接受	default , danger , primary | String | 'default' |
 | size | 安钮大小，只接受	small , normal , large  | String | 'normal' |
-
-
-## 事件
-| 参数      | 说明                                     | 入参       |
-|-----------|-----------------------------------------|------------|
-| click | 点击 button 按钮 | $event |
+| click | 点击 button 按钮，传入参数为 $event | Function |
