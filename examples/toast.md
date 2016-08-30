@@ -17,8 +17,8 @@ title: Toast 提示框
 
 ```js
 import Vue from 'vue'
-import vkButton from 'src/Button'
-import toast from '../src/toast/index'
+import vkButton from 'kakashi-ui/src/Button'
+import toast from 'kakashi-ui/src/toast/index'
 import 'kakashi-theme/src/components/toast.less'
 
 

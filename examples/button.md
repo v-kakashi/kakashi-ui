@@ -63,7 +63,7 @@ title: Button 按钮控件
 
 
 ```js
-import vkButton from 'src/Button'
+import vkButton from 'kakashi-ui/src/Button'
 import Vue from 'vue'
 import 'kakashi-theme'
 
@@ -87,6 +87,6 @@ new Vue({
 | icon | 按钮的图标由 [vkIcon](../icon.html) 组件提供显示 | String  | '' |
 | disabled | 是否禁用图标，为禁用时，不能阻止 @click 绑定的事件，只能阻止通过 :click 绑定的事件 | Boolean  | false |
 | plain | 是否设置成缕空按钮 | Boolean | false |
-| type	 | 按钮类型，只接受	default , danger , primary | String | 'default' |
+| type	 | 按钮类型，只接受	default , danger , primary （以后会改名）| String | 'default' |
 | size | 安钮大小，只接受	small , normal , large  | String | 'normal' |
 | click | 点击 button 按钮，传入参数为 $event | Function |

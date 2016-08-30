@@ -23,8 +23,8 @@ title: Msgbox 对话框组件
 ```
 
 ```js
-import vkMsgbox from '../../src/msgbox'
-import vkButton from '../../src/button'
+import vkMsgbox from 'kakashi-ui/src/msgbox'
+import vkButton from 'kakashi-ui/src/button'
 import Vue from 'vue'
 
 import 'kakashi-theme/src/components/button.less'

@@ -48,7 +48,7 @@ title: Cell 单元格控件
 
 
 ```js
-import vkCell from 'src/cell'
+import vkCell from 'kakashi-ui/src/cell'
 import Vue from 'vue'
 
 import 'kakashi-theme/src/components/cell.less'

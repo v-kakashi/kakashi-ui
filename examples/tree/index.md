@@ -35,8 +35,8 @@ title: Tree 树形控件
 ```
 
 ```js
-import vkTreeNode from 'src/tree/TreeNode'
-import vkTree from 'src/tree/Tree'
+import vkTreeNode from 'kakashi-ui/src/tree/TreeNode'
+import vkTree from 'kakashi-ui/src/tree/Tree'
 import Vue from 'vue'
 
 import 'kakashi-theme/src/components/tree.less'

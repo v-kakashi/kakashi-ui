@@ -24,9 +24,9 @@ title: Msgbox 自定义内容
 ```
 
 ```js
-import vkMsgbox from '../../src/msgbox'
-import vkImage from '../../src/image'
-import vkButton from '../../src/button'
+import vkMsgbox from 'kakashi-ui/src/msgbox'
+import vkImage from 'kakashi-ui/src/image'
+import vkButton from 'kakashi-ui/src/button'
 import Vue from 'vue'
 
 import 'kakashi-theme/src/components/image.less'

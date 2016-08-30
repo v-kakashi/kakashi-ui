@@ -15,7 +15,7 @@ title: Tree 树形控件(异步加载)
 ```
 
 ```js
-import vkTree from '../../src/tree/Tree'
+import vkTree from 'kakashi-ui/src/tree/Tree'
 import Vue from 'vue'
 
 import 'kakashi-theme/src/components/tree.less'

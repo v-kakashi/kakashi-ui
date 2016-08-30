@@ -16,9 +16,9 @@ title: Tree 树形控件(动态数据)
 ```
 
 ```js
-import vkTreeNode from '../../src/tree/TreeNode'
-import vkTree from '../../src/tree/Tree'
-import vkTreeNodeIcon from '../../src/tree/TreeNodeIcon'
+import vkTreeNode from 'kakashi-ui/src/tree/TreeNode'
+import vkTree from 'kakashi-ui/src/tree/Tree'
+import vkTreeNodeIcon from 'kakashi-ui/src/tree/TreeNodeIcon'
 import Vue from 'vue'
 
 import 'kakashi-theme/src/components/tree.less'

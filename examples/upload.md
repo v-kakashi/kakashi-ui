@@ -23,9 +23,9 @@ title: Upload 上传图片组件
 
 
 ```js
-import vkUpload from 'src/upload'
-import vkCell from 'src/cell'
-import vkField from 'src/field'
+import vkUpload from 'kakashi-ui/src/upload'
+import vkCell from 'kakashi-ui/src/cell'
+import vkField from 'kakashi-ui/src/field'
 import Vue from 'vue'
 
 import 'kakashi-theme/src/components/field.less'

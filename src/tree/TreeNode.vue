@@ -1,9 +1,9 @@
 <template>
   <li class="vk-tree-node-warp">
     <div class="vk-tree-node">
-      <vk-node-check :state="state" v-show='disableCheckbox' @click="handleSelect"></vk-node-check>
-      <div :style="{'width': (deep - 1) * 22 + 'px'}" @click="handleSelect"></div>
-      <vk-node-switcher v-if="isSync === false || !!children.length" :is-loading="syncState === 'SYNC_ING'" :expand="expand"></vk-node-switcher>
+      <vk-node-check :state="state" v-if='!disableCheckbox' @click="handleSelect"></vk-node-check>
+      <div class="vk-tree-blank" :style="{'width': (deep - 1) * 22 + 'px'}" @click="handleExpandOrSelect"> </div>
+      <vk-node-switcher v-if="isSync === false || !!children.length" :is-loading="syncState === 'SYNC_ING'" @click="handleExpand" :expand="expand"></vk-node-switcher>
       <div class="vk-tree-content" @click="handleExpand">
         <span class="vk-tree-title" >{{title}}</span>
         <span class="vk-tree-subtitle" >{{subTitle}}</span>
@@ -54,7 +54,10 @@ export default {
     key: [String, Number],
     title: String,
     disabled: Boolean,
-    disableCheckbox: Boolean,
+    disableCheckbox: {
+      type: Boolean,
+      default: true
+    },
     syncState: {
       type: String,
       default: COMPLETE_SYNC
@@ -125,6 +128,9 @@ export default {
     }
   },
   methods: {
+    handleExpandOrSelect () {
+      this.disableCheckbox ? this.handleExpand() : this.handleSelect()
+    },
     handleExpand () {
       // 如果该节点正在同步，不就展开该节点
       if (this.syncState === SYNC_ING) {

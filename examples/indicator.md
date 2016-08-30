@@ -23,8 +23,8 @@ title: Indicator 加载控件
 
 
 ```js
-import vkIndicator from 'src/indicator'
-import vkButton from 'src/Button'
+import vkIndicator from 'kakashi-ui/src/indicator'
+import vkButton from 'kakashi-ui/src/Button'
 import Spinner from 'mint-spinner'
 import Vue from 'vue'
 

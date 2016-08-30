@@ -28,7 +28,7 @@ title: Image 图片控件
 ```
 
 ```js
-import vkImage from '../src/Image'
+import vkImage from 'kakashi-ui/src/Image'
 import Vue from 'vue'
 
 import 'kakashi-theme'
