@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>infinite-scroll 无限滚动指令</title>
+    <link href="../../kakashi-ui/tpl/static/css/normalize.css" rel="stylesheet"/>
+    <link href="../../kakashi-ui/tpl/static/css/anticon.css" rel="stylesheet"/>
+    <link href="../../kakashi-ui/tpl/static/css/markdown.css" rel="stylesheet"/>
+    <link href="../../kakashi-ui/tpl/static/css/main.css" rel="stylesheet"/>
+    <link href="../../kakashi-ui/tpl/static/css/hl.css" rel="stylesheet"/>
+    <style type="text/css">
+      
+    </style>
+    <script>
+    var relativePath = "../../kakashi-ui";
+    </script>
+    <script src="../../kakashi-ui/tpl/static/js/jquery-3.1.0.min.js" charset="UTF-8"></script>
+    <script src="../../kakashi-ui/tpl/static/js/handlebars-v4.0.5.js" charset="UTF-8"></script>
+    <script src="../../kakashi-ui/tpl/static/js/element.js" charset="UTF-8"></script>
+    <script id="menu-template" type="text/x-handlebars-template">
+      <ul class="ant-menu ant-menu-inline aside-container ant-menu-light ant-menu-root" >
+        {{#each menu}}
+          <li class="ant-menu-submenu-inline ant-menu-submenu-open ant-menu-submenu">
+            <div class="ant-menu-submenu-title">
+              <h4>{{category}}</h4>
+            </div>
+            <ul class="ant-menu ant-menu-inline ant-menu-sub">
+              {{#each items}}
+                {{#if isSelf}}
+                <li class="ant-menu-item ant-menu-item-selected">
+                  <a href="{{url}}"><span>{{title}}</span></a>
+                </li>
+                {{else if isNode}}
+                <div class="ant-menu-item-group-title">{{title}}</div>
+                {{else}}
+                <li class="ant-menu-item ">
+                  <a href="{{url}}"><span>{{title}}</span></a>
+                </li>
+                {{/if}}
+                {{#if children}}
+                  <ul class="ant-menu-item-group-list">
+                  {{#each children}}
+                    {{#if isSelf}}
+                    <li class="ant-menu-item ant-menu-item-selected" style="padding-left: 48px;">
+                    {{else}}
+                    <li class="ant-menu-item" style="padding-left: 48px;">
+                    {{/if}}
+                      <a href="{{url}}"><span>{{title}}</span></a>
+                    </li>
+                  {{/each}}
+                  </ul>
+                {{/if}}
+              {{/each}}
+            </ul>
+          </li>
+        {{/each}}
+      </ul>
+    </script>
+  </head>
+  <body>
+    ../../kakashi-ui
+    infinite-scroll
+    <header id="header" class="clearfix">
+      <div class="ant-row">
+        <div style="display: inline-block;">
+          <a id="logo" href="/">
+            <img alt="logo" src="../../kakashi-ui/tpl/static/img/logo.png" />
+            <span>kakashi-ui</span>
+          </a>
+        </div>
+        <div style="float: right;">
+          <ul id="nav" class="ant-menu ant-menu-horizontal  ant-menu-light ant-menu-root">
+            <li class="ant-menu-item">
+              <a href="https://github.com/v-kakashi/kakashi-ui"><span>GitHub</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="wrapper">
+      <div id="menu" class="demos-anchor menu">
+
+      </div>
+      <div class="wrapper-content">
+        <article>
+          <section class="markdown">
+            <h1>infinite-scroll 无限滚动指令</h1>
+            
+              <hr></hr>
+<h2>说明</h2>
+<p>无限滚动条加载更多信息</p>
+<h2>代码演示</h2>
+<div class="highlight"><pre><code language=html><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+<span class="hljs-selector-class">.page-loading</span>{
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">50px</span>;
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>
+    <span class="hljs-attr">v-vk-infinite-scroll</span>=<span class="hljs-string">"loadMore()"</span>
+    <span class="hljs-attr">infinite-scroll-disabled</span>=<span class="hljs-string">"loading"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">vk-cell</span> <span class="hljs-attr">:title</span>=<span class="hljs-string">"item.title"</span> <span class="hljs-attr">:label</span>=<span class="hljs-string">"item.label"</span> <span class="hljs-attr">:ext</span>=<span class="hljs-string">"item.date"</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"item in list"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">vk-cell</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"page-loading"</span> <span class="hljs-attr">v-show</span>=<span class="hljs-string">"loading &amp;&amp; isMore"</span>&gt;</span>
+      加载中...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"page-loading"</span> <span class="hljs-attr">v-show</span>=<span class="hljs-string">"isMore == false"</span>&gt;</span>
+      全部加载完毕
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre></div>
+<div class="highlight"><pre><code language=js><span class="hljs-keyword">import</span> vkInfiniteScroll <span class="hljs-keyword">from</span> <span class="hljs-string">'../src/infinite-scroll'</span>
+<span class="hljs-keyword">import</span> vkCell <span class="hljs-keyword">from</span> <span class="hljs-string">'kakashi-ui/src/cell'</span>
+<span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">'kakashi-theme'</span>
+
+<span class="hljs-keyword">new</span> Vue({
+  el: <span class="hljs-string">"#app"</span>,
+  data () {
+    <span class="hljs-keyword">return</span> {
+      isMore: <span class="hljs-literal">true</span>,
+      loading: <span class="hljs-literal">false</span>,
+      list : []
+    }
+  },
+  methods: {
+    loadMore() {
+      <span class="hljs-keyword">this</span>.loading = <span class="hljs-literal">true</span>;
+      setTimeout(() =&gt; {
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.list.length &gt; <span class="hljs-number">40</span>){
+          <span class="hljs-keyword">this</span>.isMore = <span class="hljs-literal">false</span>
+        } <span class="hljs-keyword">else</span> {
+          <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">10</span>; i++) {
+            <span class="hljs-keyword">this</span>.list.push({ title: <span class="hljs-string">"新闻标题"</span> + (<span class="hljs-keyword">this</span>.list.length + <span class="hljs-number">1</span>), label: <span class="hljs-string">"企业传播处"</span>,  date: <span class="hljs-string">"2016-06-16 11:27"</span>})
+          }
+        }
+        <span class="hljs-keyword">this</span>.loading = <span class="hljs-literal">false</span>
+      }, <span class="hljs-number">2500</span>);
+    }
+  },
+  directives: {
+    vkInfiniteScroll
+  },
+  components: {
+    vkCell
+  }
+})</code></pre></div>
+<h2>属性</h2>
+<table><thead><tr><th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th></tr></thead>
+<tbody><tr><td>text</td>
+<td>加载文字</td>
+<td>String</td>
+<td>&#39;&#39;</td></tr>
+<tr><td>visible</td>
+<td>是否显示</td>
+<td>Boolean</td>
+<td>false</td></tr>
+<tr><td>infinite-scroll-disabled</td>
+<td>若为真，则无限滚动不会被触发</td>
+<td>Boolean</td>
+<td>false</td></tr>
+<tr><td>infinite-scroll-distance</td>
+<td>触发加载方法的滚动距离阈值（像素）</td>
+<td>Number</td>
+<td>0</td></tr>
+<tr><td>infinite-scroll-immediate-check</td>
+<td>若为真，则指令被绑定到元素上后会立即检查是否需要执行加载方法。在初始状态下内容有可能撑不满容器时十分有用。</td>
+<td>Boolean</td>
+<td>true</td></tr>
+<tr><td>infinite-scroll-listen-for-event</td>
+<td>一个 event，被执行时会立即检查是否需要执行加载方法。</td>
+<td>Function</td></tr></tbody></table>
+<p>参数    说明    类型        默认值</p>
+            
+        </article>
+        <div class="header">
+          <h1></h1>
+        </div>
+        
+          <div class="example">
+            <div class="phone">
+              <iframe class="example-html demo-page" frameborder="0" src="./infinite-scroll-demo.html"> </iframe>
+            </div>
+          </div>
+        
+      </div>
+  </body>
+</html>

@@ -51,6 +51,7 @@ $(function ready () {
     var tplData = []
     tplData.push(menuMap['说明'])
     tplData.push(menuMap['组件'])
+    tplData.push(menuMap['指令'])
     var template = Handlebars.compile($('#menu-template').html())
     var html = template({ 'menu': tplData })
 
