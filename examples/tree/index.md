@@ -58,7 +58,7 @@ new Vue({
 | selectKeys | 选中节点，取每个节点的 key 值 | Array  | null    |
 | extra | 扩展字段 | Object | null |
 | dataSoures | 数据源 | Array | [] |
-| disableCheckbox | 禁用 CheckBox (后期把默值改成 `true` ) | Boolean | false |
+| disableCheckbox | 禁用 CheckBox | Boolean | true |
 | isSync | 是否为同步数据 | Boolean | true |
 | onSelect | 选中节点事件，入参为 选中的节点 | Function | - |
 | onExpand | 展开节点事件，入参为 展开中的节点 | Function | - |

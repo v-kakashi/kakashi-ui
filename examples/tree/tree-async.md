@@ -9,7 +9,7 @@ title: Tree 树形控件(异步加载)
 
 ```html
 <div id="app">
-  <vk-tree :data-soures="data"  :disable-checkbox="true"  :is-async="true"  :on-expand="expand">
+  <vk-tree :data-soures="data"  :disable-checkbox="false"  :is-async="true"  :on-expand="expand">
   </vk-tree>
 </div>
 ```

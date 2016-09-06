@@ -21,7 +21,7 @@ title: Cell 单元格控件
   </div>
   <div class="group">
     <header class="group-header">单元格样式</header>
-    <vk-cell v-bind="a" value="福建省" is-link after="nav_next"></vk-cell>
+    <vk-cell v-bind="a" title="福建省" is-link after="navigate_next"></vk-cell>
     <vk-cell title="自定义图标1" is-link>
       <template slot="after">
         <img src="http://lorempixel.com/20/20/abstract/" style="width: 20px;" />

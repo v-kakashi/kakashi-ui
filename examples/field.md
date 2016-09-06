@@ -23,6 +23,13 @@ title: Field 表单元素
     <vk-field label="生日" placeholder="请输入生日" type="date"></vk-field>
     <vk-field placeholder="没有 label"></vk-field>
     <vk-field label="自我介绍" placeholder="自我介绍" type="textarea" rows="4"></vk-field>
+    <vk-field label="选择部门" after="navigate_next" >
+      <div :style="{ '-webkit-box-flex': 1,lineHeight:'25px'}">
+        <div>工程院</div>
+        <div>设计中心</div>
+        <div>测试部</div>
+      </div>
+    </vk-field>
   </div>
   <div class="group">
     <header class="group-header">图标样式</header>

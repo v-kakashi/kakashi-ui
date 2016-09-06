@@ -9,16 +9,14 @@
         <slot name="title">
           <div class="vk-cell-text" v-if="title">{{title}}</div>
         </slot>
-        <div class="vk-cell-value-warp">
-          <slot name="value">
-            <div class="vk-cell-value">
-              <span v-text="value"></span>
-            </div>
-          </slot>
-          <slot name="after">
-            <vk-icon v-if="after" class="vk-cell-after" :value="after"></vk-icon>
-          </slot>
-        </div>
+        <slot name="value">
+          <div class="vk-cell-value">
+            <span v-text="value"></span>
+          </div>
+        </slot>
+        <slot name="after">
+          <vk-icon v-if="after" class="vk-cell-after" :value="after"></vk-icon>
+        </slot>
       </div>
       <div class="vk-cell-body" v-if="label || ext">
         <span class="vk-cell-label" v-text="label"></span>

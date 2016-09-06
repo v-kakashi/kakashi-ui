@@ -6,7 +6,7 @@ title: infinite-scroll 无限滚动指令
 
 ## 说明
 
-无限滚动条加载更多信息(很坦白的说这个指令是抄 mint-ui 的哈哈哈)
+无限滚动条加载更多信息
 
 ## 代码演示
 
@@ -81,5 +81,4 @@ new Vue({
 | infinite-scroll-disabled        | 若为真，则无限滚动不会被触发 | Boolean	 | false |
 | infinite-scroll-distance        | 触发加载方法的滚动距离阈值（像素） | Number	 | 0 |
 | infinite-scroll-immediate-check | 若为真，则指令被绑定到元素上后会立即检查是否需要执行加载方法。在初始状态下内容有可能撑不满容器时十分有用。 | Boolean	 | true |
-| infinite-scroll-listen-for-event | 一个 event，被执行时会立即检查是否需要执行加载方法。 | Function |
-参数	说明	类型		默认值
+| infinite-scroll-listen-for-event | 一个 event，被执行时会立即检查是否需要执行加载方法。 | Function | - |

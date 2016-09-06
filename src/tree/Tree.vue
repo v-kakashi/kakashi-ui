@@ -32,7 +32,10 @@ export default {
   props: {
     dataSoures: Array,
     selectKeys: Array,
-    disableCheckbox: Boolean,
+    disableCheckbox: {
+      type: Boolean,
+      default: true
+    },
     isSync: {
       type: Boolean,
       default: true

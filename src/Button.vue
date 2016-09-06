@@ -6,9 +6,9 @@
         'vk-button-plain': plain
       }]"
       @click="handleClick">
-    <span class="vk-button-icon">
+    <span class="vk-button-icon" v-if="icon">
       <slot name="icon">
-        <vk-icon class="mintui" v-if="icon" :value="icon"></vk-icon>
+        <vk-icon class="mintui" :value="icon"></vk-icon>
       </slot>
     </span>
     <label class="vk-button-text"><slot></slot></label>
