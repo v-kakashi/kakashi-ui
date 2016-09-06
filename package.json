@@ -1,6 +1,6 @@
 {
   "name": "kakashi-ui",
-  "version": "1.0.21",
+  "version": "1.0.24",
   "description": "基于 vue 的一套 ui 组件库",
   "author": "limingmin <314407103@qq.com>",
   "main": "./src/kakashi-ui.vue",
