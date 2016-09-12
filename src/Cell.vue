@@ -2,7 +2,7 @@
   <div class="vk-cell">
     <slot>
       <span class="vk-cell-mask" v-if="isLink"></span>
-      <div class="vk-cell-title">
+      <div class="vk-cell-title" :class="{'vk-cell-title-icon': icon ,'vk-cell-title-after': after}">
         <slot name="icon">
           <vk-icon v-if="icon" class="vk-cell-icon" :value="icon"></vk-icon>
         </slot>
